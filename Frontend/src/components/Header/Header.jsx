@@ -13,8 +13,8 @@ const Header = () => {
           <img className="sm:w-[9vw] w-[50%] " src="" alt="logo" />
         </Link>
       </div>
-      <div className="flex items-center w-[60%] sm:w-auto flex-wrap">
-        <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+      <div className="flex items-center   justify-between w-[80%] sm:w-auto flex-wrap">
+        <ul className="flex  items-center  sm:flex-col mt-4 font-medium lg:flex-row lg:space-x-8 flex-wrap  lg:mt-0">
           <li>
             <NavLink
               to="/"
