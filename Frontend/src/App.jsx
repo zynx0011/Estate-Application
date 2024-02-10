@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <h1 className="text-3xl font-bold underline text-center">
-        {user?.username} <br /> Welcome to the Netflix
+        {user?.username} <br /> Welcome to the Estate Application
       </h1>
     </>
   );
