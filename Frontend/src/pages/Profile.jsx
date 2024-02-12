@@ -411,6 +411,12 @@ const Profile = () => {
           <button className="bg-blue-700 text-white p-3 rounded-lg uppercase hover:opacity-95 border font-bold my-2">
             Update
           </button>
+          <Link
+            to="/create-listing"
+            className="bg-green-700 text-center text-white p-3 rounded-lg uppercase hover:opacity-95 border font-bold my-2"
+          >
+            Create Listing
+          </Link>
         </div>
         <div className="flex justify-between items-center  sm:gap-0 sm:w-1/2 my-4 ">
           <button
