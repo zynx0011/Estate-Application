@@ -30,7 +30,7 @@ const userSchema = new Schema(
     profilePicture: {
       type: String,
       default:
-        "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtHvRUBCnAyO4-87eaA51jO6bJxudc1V8yMA&usqp=CAU",
     },
   },
   {

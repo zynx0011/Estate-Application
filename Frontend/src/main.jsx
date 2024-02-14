@@ -19,6 +19,8 @@ import PrivateRoute from "./components/PrivateRoute.jsx";
 import Profile from "./pages/Profile.jsx";
 import ChangePass from "./pages/ChangePass.jsx";
 import Listing from "./pages/Listing.jsx";
+import UpdateListing from "./pages/UpdateListing.jsx";
+import ListingPg from "./pages/ListingPg.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,11 +28,14 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/api/v1/users/Signup" element={<SignUp />} />
       <Route path="/api/v1/users/SignIn" element={<SignIN />} />
+      <Route path="/listing/:listingId" element={<ListingPg />} />
+
       <Route element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/Home" element={<App />} />
         <Route path="/change-password" element={<ChangePass />} />
         <Route path="/create-listing" element={<Listing />} />
+        <Route path="/update-listing/:listingId" element={<UpdateListing />} />
       </Route>
     </Route>
   )

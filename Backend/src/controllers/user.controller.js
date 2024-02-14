@@ -4,6 +4,7 @@ import { User } from "../models/user.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import Jwt from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
+import Listing from "../models/listing.model.js";
 
 const generateAccessTokenandRefreshToken = async (userId) => {
   try {
@@ -255,7 +256,6 @@ const updateUserName = asyncHandler(async (req, res) => {
 });
 
 const updateAccoutDetails = asyncHandler(async (req, res) => {
-  console.log("this is req", req.user.profilePicture);
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
@@ -406,6 +406,19 @@ const deleteAccount = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, "user deleted successfully"));
 });
 
+const listAccount = async (req, res) => {
+  if (req.user.id === req.params.id) {
+    try {
+      const listings = await Listing.find({ userRef: req.params.id });
+      return res.status(200).json(listings);
+    } catch (error) {
+      throw new ApiError(error);
+    }
+  } else {
+    return new ApiError((401, "You can only view your own listings!"));
+  }
+};
+
 export {
   registerUser,
   loginUser,
@@ -417,4 +430,5 @@ export {
   updateUserName,
   google,
   deleteAccount,
+  listAccount,
 };

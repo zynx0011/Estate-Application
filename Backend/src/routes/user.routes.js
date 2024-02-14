@@ -10,6 +10,7 @@ import {
   updateUserName,
   google,
   deleteAccount,
+  listAccount,
 } from "../controllers/user.controller.js";
 import { verifyjwt } from "../middlewares/auth.middleware.js";
 
@@ -34,6 +35,8 @@ router.route("/update-username").patch(verifyjwt, updateUserName);
 router.route("/update-account/:id").post(verifyjwt, updateAccoutDetails); // patch is used for single update
 
 router.route("/delete-account/:id").delete(verifyjwt, deleteAccount);
+
+router.route("/listing/:id").get(verifyjwt, listAccount);
 
 // routes for video
 

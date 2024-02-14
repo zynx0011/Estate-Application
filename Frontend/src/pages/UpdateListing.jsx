@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { app } from "../FireBase";
 import {
   getDownloadURL,
@@ -9,6 +9,7 @@ import {
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Listing = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,6 @@ const Listing = () => {
     parking: false,
     furnished: false,
   });
-  console.log(formData);
 
   const [images, setImages] = useState([]);
   const [imageError, setImageError] = useState(false);
@@ -35,6 +35,7 @@ const Listing = () => {
   const { currentUser } = useSelector((state) => state.auth);
   const data = currentUser?.data?.data?.user;
   const navigate = useNavigate();
+  const params = useParams();
 
   const uploadImages = () => {
     if (images.length > 0 && images.length && formData.imageUrls.length < 6) {
@@ -149,10 +150,13 @@ const Listing = () => {
       // if (data.success === false) {
       //   setError(data.message);
       // }
-      const res = await axios.post("/api/v1/listing/create", {
-        ...formData,
-        userRef: data?._id || currentUser?._id,
-      });
+      const res = await axios.post(
+        `/api/v1/listing/update/${params.listingId}`,
+        {
+          ...formData,
+          userRef: data?._id,
+        }
+      );
       setLoading(false);
       if (res.data.success === false) {
         setError(res.data.message);
@@ -164,10 +168,30 @@ const Listing = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchListing = async () => {
+      const listingId = params.listingId;
+      const res = await axios.get(`/api/v1/listing/get/${listingId}`);
+      console.log(res.data.data);
+      setFormData(res.data.data);
+    };
+    //   const listingId = params.listingId;
+    //   const res = await fetch(`/api/v1/listing/get/${listingId}`);
+    //   const data = await res.json();
+    //   if (data.success === false) {
+    //     console.log(data.message);
+    //     return;
+    //   }
+    //   setFormData(data);
+    // };
+
+    fetchListing();
+  }, []);
+
   return (
     <main className="p-3 mb-10 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold text-center my-7">
-        List your property
+        Update your property
       </h1>
       <form onSubmit={handlesubmit} className="flex flex-col sm:flex-row">
         <div className="flex flex-col gap-4 flex-1 ">
@@ -346,7 +370,7 @@ const Listing = () => {
             </button>
           </div>
           {imageError && <span className="text-red-700 ">{imageError}</span>}
-          {formData.imageUrls.length > 0 &&
+          {formData.imageUrls?.length > 0 &&
             formData.imageUrls.map((url, index) => (
               <div
                 key={url}
@@ -372,7 +396,7 @@ const Listing = () => {
               disabled={loading || uploading}
               className=" border rounded-lg font-bold p-3 w-full text-green-500"
             >
-              {loading ? "Creating Listing..." : "Create Listing"}
+              {loading ? "Creating Listing..." : "Update Listing"}
             </button>
             {error && <span className="text-red-700 ">{error}</span>}
           </div>
