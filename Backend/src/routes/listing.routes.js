@@ -5,6 +5,7 @@ import {
   deleteListing,
   updateListing,
   getListing,
+  // getListings,
 } from "../controllers/listing.controller.js";
 
 const router = Router();

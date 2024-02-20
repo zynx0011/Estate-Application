@@ -11,6 +11,7 @@ import {
   google,
   deleteAccount,
   listAccount,
+  getUser,
 } from "../controllers/user.controller.js";
 import { verifyjwt } from "../middlewares/auth.middleware.js";
 
@@ -37,6 +38,8 @@ router.route("/update-account/:id").post(verifyjwt, updateAccoutDetails); // pat
 router.route("/delete-account/:id").delete(verifyjwt, deleteAccount);
 
 router.route("/listing/:id").get(verifyjwt, listAccount);
+
+router.get("/:id", verifyjwt, getUser);
 
 // routes for video
 
