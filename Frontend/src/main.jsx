@@ -21,6 +21,8 @@ import ChangePass from "./pages/ChangePass.jsx";
 import Listing from "./pages/Listing.jsx";
 import UpdateListing from "./pages/UpdateListing.jsx";
 import ListingPg from "./pages/ListingPg.jsx";
+import Header from "./components/Header/Header.jsx";
+import Search from "./pages/Search.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/api/v1/users/Signup" element={<SignUp />} />
       <Route path="/api/v1/users/SignIn" element={<SignIN />} />
+      <Route path="/search?/" element={<Search />} />
       <Route path="/listing/:listingId" element={<ListingPg />} />
 
       <Route element={<PrivateRoute />}>

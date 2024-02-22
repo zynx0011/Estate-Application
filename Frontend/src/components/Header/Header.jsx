@@ -1,20 +1,54 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.auth);
   const user = currentUser?.data?.data?.user;
   const currentData = currentUser?.data;
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("searchTerms", searchTerm);
+    const serachQuery = urlParams.toString();
+    navigate(`/search?/${serachQuery}`);
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get("searchTerms");
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
+  }, [location.search]);
   return (
-    <div className="flex items-center justify-around border-b-2 h-[10vh] min-h-[10vh] sm:h-auto border-white bg-[#101010] ">
+    <div className="flex items-center  justify-around border-b-2 h-[10vh] min-h-[12vh] sm:h-auto border-white bg-[#101010] ">
       <div>
         <Link to={"/"}>
           <img className="sm:w-[9vw] w-[50%] " src="" alt="logo" />
         </Link>
       </div>
-      <div className="flex items-center   justify-between w-[80%] sm:w-auto flex-wrap">
-        <ul className="flex  items-center  sm:flex-col mt-4 font-medium lg:flex-row lg:space-x-8 flex-wrap  lg:mt-0">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-slate-100 p-2 rounded-lg flex items-center"
+      >
+        <input
+          type="text"
+          placeholder="Search..."
+          className="bg-transparent focus:outline-none w-24 sm:w-64 text-black"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button>
+          <FaSearch className="text-slate-600" />
+        </button>
+      </form>
+      <div className="flex items-center   justify-evenly w-[80%] sm:w-auto flex-wrap">
+        <ul className="lg:flex hidden  items-center sm:flex-col  font-medium lg:flex-row lg:space-x-8 flex-wrap  ">
           <li>
             <NavLink
               to="/"
