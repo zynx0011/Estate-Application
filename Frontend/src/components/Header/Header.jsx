@@ -26,13 +26,17 @@ const Header = () => {
     }
   }, [location.search]);
   return (
-    <div className="flex items-center  justify-around border-b-2 h-[10vh] min-h-[12vh] sm:h-auto border-white bg-[#101010] ">
+    <div className="flex items-center bg-stone-800  justify-around border-b-2 h-[10vh] min-h-[12vh] sm:h-auto border-white ">
       <div>
         <Link to={"/"}>
-          <img className="sm:w-[9vw] w-[50%] " src="" alt="logo" />
+          <img
+            className="sm:w-[5vw] w-[33%] p-3 ml-6 sm:ml-0 sm:p-0 rounded-full "
+            src="https://img.freepik.com/free-vector/logo-real-estate-home-solutions-that-is-home-solution_527952-33.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1708473600&semt=ais"
+            alt="logo"
+          />
         </Link>
       </div>
-      <form
+      {/* <form
         onSubmit={handleSubmit}
         className="bg-slate-100 p-2 rounded-lg flex items-center"
       >
@@ -46,7 +50,7 @@ const Header = () => {
         <button>
           <FaSearch className="text-slate-600" />
         </button>
-      </form>
+      </form> */}
       <div className="flex items-center   justify-evenly w-[80%] sm:w-auto flex-wrap">
         <ul className="lg:flex hidden  items-center sm:flex-col  font-medium lg:flex-row lg:space-x-8 flex-wrap  ">
           <li>
@@ -88,7 +92,7 @@ const Header = () => {
           <li></li>
         </ul>
         <Link to="/profile">
-          <button className="font-semibold hover:border-b-2">
+          <button className="font-semibold hover:border-b-2 ">
             {currentUser ? (
               <img
                 src={
