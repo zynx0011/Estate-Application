@@ -7,6 +7,7 @@ const NewPasswordPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [timer, setTimer] = useState(5);
   const { userId, token } = useParams();
   const navigate = useNavigate();
 
@@ -19,6 +20,13 @@ const NewPasswordPage = () => {
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
   };
+
+  for (let i = 5; i > 0; i--) {
+    setTimer(i);
+    setTimeout(() => {
+      setTimer(i - 1);
+    }, 1000);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +63,7 @@ const NewPasswordPage = () => {
           )}
           {success && (
             <p className="text-center text-sm text-green-600">
-              Please wait redirecting to the SignIN page
+              Please wait redirecting in {timer} to the SignIN page
             </p>
           )}
           {error && (
