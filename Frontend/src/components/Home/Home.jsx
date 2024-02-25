@@ -68,15 +68,15 @@ export default function Home() {
       <div className="relative  ">
         <img
           src="https://images.pexels.com/photos/3288103/pexels-photo-3288103.png"
-          className="opacity-[0.3] h-[70vh] sm:h-auto object-cover sm:object-cover "
+          className="opacity-[0.3] h-[70vh] sm:h-auto object-cover  "
           alt=""
         />
         <div className="absolute top-[35%] left-[12%]  flex  flex-col gap-4 sm:left-[57%]  space-y-5  ">
           {" "}
-          <h1 className=" w-full text-2xl sm:text-6xl font-bold ">
+          <h1 className=" w-full text-4xl sm:text-6xl font-bold ">
             Your Future Home <br className="mb-3" /> &nbsp; &nbsp;&nbsp; &nbsp;
             Is&nbsp;
-            <span className="text-white text-4xl rounded-lg p-3   bg-amber-900 ">
+            <span className="text-white sm:text-4xl text-2xl rounded-lg p-3   bg-amber-900 ">
               Right Here
             </span>
           </h1>
@@ -97,7 +97,7 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <div className="p-6 bg-stone-800  opacity-100 border-t-4 border-b-4 border">
+      <div className="p-6 bg-[#161616]  opacity-100 border-t-2 border-b-2 border">
         <h1 className="text-3xl font-bold  text-center">Featured Properties</h1>
       </div>
       {/* swiper */}

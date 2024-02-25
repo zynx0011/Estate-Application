@@ -21,13 +21,23 @@ import ChangePass from "./pages/ChangePass.jsx";
 import Listing from "./pages/Listing.jsx";
 import UpdateListing from "./pages/UpdateListing.jsx";
 import ListingPg from "./pages/ListingPg.jsx";
-import Header from "./components/Header/Header.jsx";
 import Search from "./pages/Search.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import ForgotPass from "./pages/ForgotPass.jsx";
+import ForgotPassPopUp from "./pages/ForgotPassPopUp.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/api/v1/users/forgotPassword" element={<ForgotPass />} />
+      <Route
+        path="/reset-password/:userId/:token"
+        element={<ForgotPassPopUp />}
+      />
       <Route path="/api/v1/users/Signup" element={<SignUp />} />
       <Route path="/api/v1/users/SignIn" element={<SignIN />} />
       <Route path="/search?/" element={<Search />} />

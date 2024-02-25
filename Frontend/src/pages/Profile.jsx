@@ -254,11 +254,11 @@ const Profile = () => {
               )}
             </p>
 
-            <p className="text-green-700 mt-5 text-center">
+            <p className="text-green-700  text-center">
               {updateSuccess ? (
                 "Details are updated successfully!"
               ) : (
-                <p className="text-red-700 mt-5 text-center">
+                <p className="text-red-700  text-center">
                   {(Error && "Something went wrong!") || Error.message}
                 </p>
               )}
@@ -331,7 +331,7 @@ const Profile = () => {
                     <h1 className=" text-center font-semibold mt-4 text-xs sm:text-lg">
                       {listing.name}
                     </h1>
-                    <div className="flex sm:space-x-20 item-center left-10   space-x-10 sm:left-10 absolute bottom-5">
+                    <div className="flex sm:space-x-20 item-center left-3  space-x-10 sm:left-10 absolute bottom-5">
                       <Link to={`/update-listing/${listing._id}`}>
                         <button className="bg-green-700 text-white p-2 w-[10vh]  rounded-lg font-semibold ">
                           Edit

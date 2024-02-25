@@ -5,6 +5,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import Jwt from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
 import Listing from "../models/listing.model.js";
+import nodemailer from "nodemailer";
 
 const generateAccessTokenandRefreshToken = async (userId) => {
   try {
@@ -349,7 +350,6 @@ const google = async (req, res) => {
         await generateAccessTokenandRefreshToken(user._id);
       const { password: hashedPassword, ...rest } = user._doc;
       const expiryDate = new Date(Date.now() + 3600000); // 1 hour
-
       res
         .cookie("accessToken", accessToken, {
           httpOnly: true,
@@ -434,6 +434,122 @@ export const getUser = async (req, res, next) => {
   }
 };
 
+const forgotPassword = async (req, res) => {
+  if (!req.body.email || req.body.email === null) {
+    return res.status(400).json({ message: "Email is required" });
+  }
+
+  const user = await User.findOne({ email: req.body.email });
+
+  // console.log("email of body", req.body.email);
+  // console.log("email of user", user);
+
+  if (!user || user === null) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  // console.log("This is the user", user);
+
+  const secret = process.env.REFRESH_TOKEN_SECRET + user.password;
+
+  const token = Jwt.sign({ _id: user._id }, secret, {
+    expiresIn: "5m",
+  });
+  console.log("This is the token  ", token);
+  const link = `http://localhost:5173/reset-password/${user._id}/${token}`;
+
+  // let transporter = nodemailer.createTransport({
+  //   service: "gmail",
+  //   auth: {
+  //     user: "Estate@gmail.com",
+  //     pass: "yourpassword",
+  //   },
+  // });
+
+  // let mailOptions = {
+  //   from: "youremail@gmail.com",
+  //   to: "abc@gmail.com",
+  //   subject: "Reset Password",
+  //   text: link,
+  // };
+
+  // transporter.sendMail(mailOptions, function (error, info) {
+  //   if (error) {
+  //     console.log(error);
+  //   } else {
+  //     console.log("Email sent: " + info.response);
+  //   }
+  // });
+
+  console.log("This is the link", link);
+  if (!token) {
+    throw new ApiError(404, "No token found");
+  }
+
+  return res.status(200).json({ link });
+};
+
+const resetPassword = asyncHandler(async (req, res) => {
+  const { id, token } = req.params;
+  console.log(id, "Reset Password");
+  const existeduser = await User.findOne({ _id: id });
+
+  if (!existeduser) {
+    throw new ApiError(404, "User not found");
+  }
+
+  const secret = process.env.REFRESH_TOKEN_SECRET + existeduser.password;
+
+  const verify = Jwt.verify(token, secret);
+
+  if (!verify) {
+    throw new ApiError(404, "Invalid token in rest password");
+  }
+});
+
+const changeforgotPassword = asyncHandler(async (req, res) => {
+  const { userId, token } = req.params;
+  const { newPassword, confirmPassword } = req.body;
+  // console.log("userId", req.params.userId);
+  // console.log("Token", token);
+
+  // console.log("this is change password userId", userId);
+  const existeduser = await User.findOne({ _id: userId });
+
+  if (!existeduser) {
+    throw new ApiError(404, "User not found");
+  }
+  const secret = process.env.REFRESH_TOKEN_SECRET + existeduser.password;
+
+  try {
+    const verify = Jwt.verify(token, secret);
+    if (!verify) {
+      throw new ApiError(404, "Invalid token");
+    }
+  } catch (error) {
+    console.log("error while verify token", error);
+  }
+
+  if (newPassword !== confirmPassword) {
+    throw new ApiError(404, "Password does not match");
+  }
+  const hashedPassword = bcryptjs.hashSync(newPassword, 10);
+
+  const user = await User.findByIdAndUpdate(userId, {
+    $set: {
+      password: hashedPassword,
+    },
+  });
+
+  if (!user) {
+    throw new ApiError(404, "error while updating password");
+  }
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "Password updated successfully"));
+});
+
 export {
   registerUser,
   loginUser,
@@ -446,4 +562,7 @@ export {
   google,
   deleteAccount,
   listAccount,
+  forgotPassword,
+  resetPassword,
+  changeforgotPassword,
 };

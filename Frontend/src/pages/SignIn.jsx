@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { signInStart, signInSuccess, signInFailure } from "../store/authSlice";
@@ -11,13 +11,13 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       dispatch(signInStart());
       const res = await axios.post("/api/v1/users/SignIn", { email, password });
       dispatch(signInSuccess(res));
+
       Navigate("/Home");
     } catch (err) {
       dispatch(signInFailure(err));
@@ -75,13 +75,11 @@ const SignIn = () => {
             </div>
             <div className="form-field">
               <div className="form-control justify-between">
-                <div className="flex gap-2">
-                  <input type="checkbox" className="checkbox" />
-                  <Link href="#">Remember me</Link>
-                </div>
                 <label className="form-label">
-                  <Link className="link link-underline-hover link-primary text-sm">
-                    Forgot your password?
+                  <Link to={"/api/v1/users/forgotPassword"}>
+                    <button className="link link-underline-hover link-primary text-sm">
+                      Forgot your password?
+                    </button>
                   </Link>
                 </label>
               </div>

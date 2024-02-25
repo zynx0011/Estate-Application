@@ -12,6 +12,9 @@ import {
   deleteAccount,
   listAccount,
   getUser,
+  forgotPassword,
+  changeforgotPassword,
+  resetPassword,
 } from "../controllers/user.controller.js";
 import { verifyjwt } from "../middlewares/auth.middleware.js";
 
@@ -39,7 +42,11 @@ router.route("/delete-account/:id").delete(verifyjwt, deleteAccount);
 
 router.route("/listing/:id").get(verifyjwt, listAccount);
 
-router.get("/:id", verifyjwt, getUser);
+router.route("/:id").get(verifyjwt, getUser);
+
+router.route("/forgotPassword").post(forgotPassword);
+router.route("/reset-password/:id/:token").get(resetPassword);
+router.route("/reset-password/:userId/:token").post(changeforgotPassword);
 
 // routes for video
 

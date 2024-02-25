@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -26,11 +25,11 @@ const Header = () => {
     }
   }, [location.search]);
   return (
-    <div className="flex items-center bg-stone-800  justify-around border-b-2 h-[10vh] min-h-[12vh] sm:h-auto border-white ">
+    <div className="flex items-center bg-[#252424ec]  justify-around border-b-2 h-[10vh] min-h-[12vh] sm:h-auto border-white ">
       <div>
         <Link to={"/"}>
           <img
-            className="sm:w-[5vw] w-[33%] p-3 ml-6 sm:ml-0 sm:p-0 rounded-full "
+            className="sm:w-[3.5vw] w-[33%] p-3 ml-6 sm:ml-0 sm:p-0 rounded-full "
             src="https://img.freepik.com/free-vector/logo-real-estate-home-solutions-that-is-home-solution_527952-33.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1708473600&semt=ais"
             alt="logo"
           />
@@ -58,7 +57,7 @@ const Header = () => {
               to="/"
               className={({ isActive }) =>
                 `block py-2 pr-4 pl-3 duration-200 ${
-                  isActive ? "text-gray-500" : "text-white"
+                  isActive ? "text-amber-500" : "text-white"
                 }  hover:border-b-2 lg:hover:bg-transparent lg:border-0  lg:p-0 font-semibold`
               }
             >
@@ -67,10 +66,10 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to="/"
+              to="/about"
               className={({ isActive }) =>
                 `block py-2 pr-4 pl-3 duration-200 ${
-                  isActive ? "text-gray-500" : "text-white"
+                  isActive ? "text-amber-500" : "text-white"
                 }  hover:border-b-2 lg:hover:bg-transparent lg:border-0  lg:p-0 font-semibold`
               }
             >
@@ -79,10 +78,10 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to="/"
+              to="/contact"
               className={({ isActive }) =>
                 `block py-2 pr-4 pl-3 duration-200 ${
-                  isActive ? "text-gray-500" : "text-white"
+                  isActive ? "text-amber-500" : "text-white"
                 }  hover:border-b-2 lg:hover:bg-transparent lg:border-0  lg:p-0 font-semibold`
               }
             >
@@ -92,7 +91,7 @@ const Header = () => {
           <li></li>
         </ul>
         <Link to="/profile">
-          <button className="font-semibold hover:border-b-2 ">
+          <button className="font-semibold  ">
             {currentUser ? (
               <img
                 src={
