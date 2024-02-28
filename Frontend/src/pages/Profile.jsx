@@ -22,6 +22,9 @@ import {
 import { Link } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 
+import Alert from "@mui/material/Alert";
+import { Avatar, Skeleton } from "@mui/material";
+
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.auth);
   const user = currentUser?.data?.data?.user;
@@ -160,6 +163,26 @@ const Profile = () => {
         Profile
       </h1>
       <hr className="w-[80%] m-auto" />
+
+      {updateSuccess ? (
+        <Alert
+          variant="filled"
+          severity="success"
+          className="absolute right-3 top-[16%] "
+          sx={{ width: "20%" }}
+        >
+          Successfully Updated Information
+        </Alert>
+      ) : Error ? (
+        <Alert
+          variant="filled"
+          severity="error"
+          className="absolute right-3 top-[16%] "
+          sx={{ width: "20%" }}
+        >
+          This is a filled error Alert.
+        </Alert>
+      ) : null}
 
       <p className="sm:text-4xl text-2xl   text-center  mt-10 font-bold ">
         Welcome back,{" "}
@@ -301,6 +324,11 @@ const Profile = () => {
           >
             My Properties
           </button>
+          {userListing.length === 0 && (
+            <p className="text-red-600 font-semibold text-xl mt-0">
+              No Properties Found
+            </p>
+          )}
         </div>
 
         {/* <button

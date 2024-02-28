@@ -11,7 +11,7 @@ const NewPasswordPage = () => {
   const { userId, token } = useParams();
   const navigate = useNavigate();
 
-  console.log(userId, token);
+  // console.log(userId, token);
 
   const handleNewPasswordChange = (e) => {
     setNewPassword(e.target.value);

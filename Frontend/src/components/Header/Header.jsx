@@ -51,7 +51,7 @@ const Header = () => {
         </button>
       </form> */}
       <div className="flex items-center   justify-evenly w-[80%] sm:w-auto flex-wrap">
-        <ul className="lg:flex hidden  items-center sm:flex-col  font-medium lg:flex-row lg:space-x-8 flex-wrap  ">
+        <ul className="lg:flex hidden  items-center sm:flex-col  text-lg lg:flex-row lg:space-x-8 flex-wrap  ">
           <li>
             <NavLink
               to="/"
@@ -91,7 +91,7 @@ const Header = () => {
           <li></li>
         </ul>
         <Link to="/profile">
-          <button className="font-semibold  ">
+          <button className="font-semibold text-lg ">
             {currentUser ? (
               <img
                 src={

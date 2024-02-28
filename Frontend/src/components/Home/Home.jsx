@@ -65,7 +65,7 @@ export default function Home() {
   return (
     <div>
       {/* top */}
-      <div className="relative  ">
+      <div className="relative border-b-2  ">
         <img
           src="https://images.pexels.com/photos/3288103/pexels-photo-3288103.png"
           className="opacity-[0.3] h-[70vh] sm:h-auto object-cover  "
@@ -97,11 +97,16 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <div className="p-6 bg-[#161616]  opacity-100 border-t-2 border-b-2 border">
-        <h1 className="text-3xl font-bold  text-center">Featured Properties</h1>
+      <div className="p-6 bg-[#161616]  opacity-100  mt-7   ">
+        <h1 className="text-4xl font-bold  text-center">Featured Properties</h1>
       </div>
       {/* swiper */}
-      <Swiper navigation autoplay={{ delay: 3000 }} loop={true}>
+      <Swiper
+        navigation
+        autoplay={{ delay: 3000 }}
+        loop={true}
+        className="mt-12"
+      >
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
@@ -128,7 +133,7 @@ export default function Home() {
                 Recent offers
               </h2>
               <Link
-                className="text-xl text-amber-800 hover:underline "
+                className="text-xl mb-10 mt-5 text-amber-800 hover:underline "
                 to={"/search?offer=true"}
               >
                 Show more offers
@@ -148,7 +153,7 @@ export default function Home() {
                 Recent Places for Rent
               </h2>
               <Link
-                className="text-xl text-amber-800 hover:underline "
+                className=" text-xl mb-10 mt-5 text-amber-800 hover:underline "
                 to={"/search?offer=true"}
               >
                 Show more offers
@@ -168,7 +173,7 @@ export default function Home() {
                 Recent Places For Sale
               </h2>
               <Link
-                className="text-xl text-amber-800 hover:underline "
+                className=" text-xl mb-10 mt-5 text-amber-800 hover:underline "
                 to={"/search?offer=true"}
               >
                 Show more offers

@@ -13,68 +13,63 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   return (
-    <div className=" px-4 py-14 mx-auto relative min-h-screen mb-[10%]">
-      <h1 className="text-7xl  max-w-6xl text-center font-bold  mb-11 text-amber-700 ">
-        <span className="text-white"> Contact</span> Us
+    <div className="px-4 py-14 mx-auto relative min-h-screen mb-10">
+      <h1 className="text-4xl md:text-7xl max-w-6xl text-center font-bold mb-6 md:mb-11 text-amber-700 ">
+        <span className="text-white">Contact</span> Us
       </h1>
 
-      <hr className="w-[80%] mx-auto mb-10" />
+      <hr className=" md:w-[80%] mx-auto mb-6 md:mb-10" />
 
-      <div className="p-4">
-        <div className="bg-amber-700 w-full p-16 rounded-lg z-0 ">
-          <h1 className="text-3xl font-bold mb-4 ">
+      <div className="p-4 grid md:grid-cols-2 gap-6 mt-14 items-center justify-center">
+        <div className="bg-amber-700 w-full p-8 md:p-10 rounded-lg mb-6 md:mb-0 md:w-full md:max-w-sm md:ml-[25%]">
+          <h1 className="text-2xl md:text-3xl font-bold mb-4 ">
             <span className="text-white">Contact Us</span>
-            <hr className="w-[50%] mt-5 " />
           </h1>
-          <div className="flex items-center gap-4 p-4">
+          <div className="flex items-center gap-4 mb-2">
             <FaLocationArrow className="text-2xl text-white" />
             <p className="text-white">Kolkata, India</p>
           </div>
-          <div className="flex items-center gap-4 p-4">
+          <div className="flex items-center gap-4 mb-2">
             <FaUser className="text-2xl text-white" />
             <p className="text-white">abc</p>
           </div>
-          <div className="flex items-center gap-4 p-4">
+          <div className="flex items-center gap-4 mb-2">
             <FaEnvelope className="text-2xl text-white" />
             <p className="text-white">abc@gmail.com</p>
           </div>
-          <div className="flex items-center gap-4 p-4">
+          <div className="flex items-center gap-4 mb-2">
             <FaPhone className="text-2xl text-white" />
             <p className="text-white">+91 123456789</p>
           </div>
         </div>
-        <div className="w-[60%] p-14 text-amber-600  bg-[#242323] rounded-lg  z-10 absolute  top-[37%] right-8">
-          <h1 className="text-3xl font-bold mb-4 ">Get In Touch</h1>
+        <div className="bg-[#242323] w-full p-8 text-amber-600 rounded-lg md:-ml-[34%]">
+          <h1 className="text-2xl md:text-3xl font-bold mb-4 ">Get In Touch</h1>
           <div className="div">
-            <label>Enter Your Name</label>
+            <label className="text-white">Enter Your Name</label>
             <input
               type="text"
               placeholder="Name"
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full p-3 bg-transparent text-white font-semibold text-sm focus:outline-none"
+              className="w-full p-3 bg-transparent text-white font-semibold text-sm border-b focus:outline-none mb-4"
             />{" "}
-            <hr className="w-full opacity-[0.5] border border-black" />
-            <label>Enter Your Email</label>
+            <label className="text-white">Enter Your Email</label>
             <input
               type="email"
               placeholder="Email"
               id="email"
-              className="w-full p-3 bg-transparent text-white font-semibold text-sm focus:outline-none"
+              className="w-full p-3 bg-transparent text-white font-semibold border-b text-sm focus:outline-none mb-4"
             />
-            <hr className="w-full opacity-[0.5] border border-black" />
-            <label>Enter Your Message</label>
+            <label className="text-white">Enter Your Message</label>
             <textarea
-              type="text"
               rows={5}
-              placeholder="Meassage"
+              placeholder="Message"
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-full p-3 bg-transparent text-white font-semibold text-sm focus:outline-none"
+              className="w-full p-3 bg-transparent text-white border-b font-semibold text-sm focus:outline-none mb-4"
             />
-            <hr className="w-full opacity-[0.5] border border-black" />
             <Link
               to={`mailto:"abc@gmail.com"?subject=Regarding:"Estate Application"&body=${message}`}
             >
