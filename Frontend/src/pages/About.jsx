@@ -51,7 +51,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 
 const About = () => {
   const [offerListings, setOfferListings] = useState([]);
-  console.log(offerListings);
+  // console.log(offerListings);
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
@@ -65,28 +65,56 @@ const About = () => {
     fetchOfferListings();
   }, []);
   return (
-    <div>
-      <Box
-        sx={{
-          width: 500,
-          height: 450,
-          overflowY: "scroll",
-          scrollbarWidth: "none",
-        }}
-      >
-        <ImageList variant="masonry" cols={3} gap={8}>
-          {offerListings.map((item) => (
-            <ImageListItem key={item.imageUrls}>
-              <img
-                srcSet={`${item.imageUrls}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                src={`${item.imageUrls}?w=248&fit=crop&auto=format`}
-                alt={item.name}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-      </Box>
+    <div className="mx-auto relative min-h-screen ">
+      <div className="relative min-h-[50vh]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url(https://res.cloudinary.com/myhq/image/upload/workspaces/bhive11-mohancooperativeindustrialestate/1.jpg)",
+            opacity: "0.4", // Adjust opacity as needed
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
+            About <span className="text-amber-700">us</span>
+          </h1>
+        </div>
+      </div>
+      <div className="flex items-center justify-center p-6 mt-[10%]">
+        <div className="p-10 flex flex-col gap-11 max-w-[50%]">
+          <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
+            <span className="text-amber-700"> Who</span> We Are
+          </h1>
+          <p className="text-slate-300 text-xl">
+            Reatestate offers comprehensive real estate services, including
+            buying, selling, consultancy, and digital marketing. Our team
+            analyzes market trends to devise profitable investment plans. With
+            our dedicated professionals and innovative platform, we're
+            transforming the buying and selling experience, making it seamless
+            and intelligent.
+          </p>
+          <button className="text-amber-700 font-bold p-3 text-2xl max-w-md hover:bg-amber-700 hover:text-white bg-white rounded-xl">
+            Explore more
+          </button>
+        </div>
+        <div className="div">
+          <img
+            src="https://img.freepik.com/free-photo/guy-shows-document-girl-group-young-freelancers-office-have-conversation-working_146671-13569.jpg?w=1060&t=st=1710533014~exp=1710533614~hmac=c0ba57009669ab7c2c305a80fd5f89d2e4ec1cea628cab1f7f290d8bc2fd25d9"
+            alt=""
+            className="rounded-full object-cover w-[500px] h-[500px] shadow-lg"
+          />
+        </div>
+      </div>
+      <div className="div flex flex-col items-center mt-[10%] bg-">
+        <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
+          <span className="text-amber-700"> What</span> We Offer
+        </h1>
+        <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
+          <span className="text-amber-700"> For</span> You
+        </h1>
+      </div>
     </div>
   );
 };
