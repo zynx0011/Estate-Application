@@ -87,7 +87,7 @@ export default function Home() {
             <input
               type="text"
               placeholder="Search..."
-              className="bg-transparent focus:outline-none w-14 text-black "
+              className="bg-transparent focus:outline-none w-14 rounded-full "
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />

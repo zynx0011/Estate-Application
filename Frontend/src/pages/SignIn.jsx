@@ -29,9 +29,10 @@ const SignIn = () => {
     <h1 className="text-center font-bold text-2xl">Loading...</h1>
   ) : (
     <form onSubmit={submitHandler}>
-      <div className="mt-[7%] mb-[5%] ">
+      <div className="mt-[7%] mb-[5%] flex items-center justify-center">
+        <div className="  "></div>
         <div
-          className="mx-auto flex w-full max-w-sm border  border-white p-[2rem]  rounded
+          className="mx-auto flex w-full max-w-sm   p-[2rem]  rounded-lg
         flex-col gap-6 "
         >
           <div className="flex flex-col items-center">
@@ -46,14 +47,14 @@ const SignIn = () => {
           </div>
           <div className="form-group">
             <div className="form-field">
-              <label className="form-label">Email address</label>
+              <label className="text-lg font-semibold">Email address</label>
 
               <input
-                placeholder="Type here"
+                placeholder=" Enter your email"
                 type="email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="input max-w-full"
+                className=" bg-transparent  placeholder:opacity-[0.5]  max-w-full"
               />
               <label className="form-label">
                 <span className="form-label-alt">

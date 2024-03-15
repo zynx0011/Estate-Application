@@ -21,12 +21,12 @@ const NewPasswordPage = () => {
     setConfirmPassword(e.target.value);
   };
 
-  for (let i = 5; i > 0; i--) {
-    setTimer(i);
-    setTimeout(() => {
-      setTimer(i - 1);
-    }, 1000);
-  }
+  // for (let i = 5; i > 0; i--) {
+  //   setTimer(i);
+  //   setTimeout(() => {
+  //     setTimer(i - 1);
+  //   }, 1000);
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,9 +43,9 @@ const NewPasswordPage = () => {
       );
 
       setSuccess(true);
-      setTimeout(() => {
-        navigate("/api/v1/users/SignIn");
-      }, 5000);
+      // setTimeout(() => {
+      //   navigate("/api/v1/users/SignIn");
+      // }, 5000);
     } catch (error) {
       console.log(error);
       setError(true, "An error occurred while checking passwords", error);
@@ -57,14 +57,11 @@ const NewPasswordPage = () => {
       <div className="max-w-md w-full space-y-8">
         <div>
           {success && (
-            <p className="text-center text-sm text-green-600">
-              Password updated successfully
-            </p>
-          )}
-          {success && (
-            <p className="text-center text-sm text-green-600">
-              Please wait redirecting in {timer} to the SignIN page
-            </p>
+            <>
+              <p className="text-center text-sm text-green-600">
+                Password updated successfully
+              </p>
+            </>
           )}
           {error && (
             <p className="text-center text-sm text-red-600">
@@ -75,16 +72,11 @@ const NewPasswordPage = () => {
           <h2 className="mt-6 text-center text-3xl font-extrabold">
             Create Your <span className="text-amber-600"> New Password </span>
           </h2>
-          {error && (
-            <p className="mt-2 text-center text-sm text-red-600">{error}</p>
-          )}
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm sm:space-y-4">
             <div>
-              <label htmlFor="new-password" className="sr-only">
-                New Password
-              </label>
+              <label className="sr-only">New Password</label>
               <input
                 id="new-password"
                 name="newPassword"
@@ -98,9 +90,7 @@ const NewPasswordPage = () => {
               />
             </div>
             <div>
-              <label htmlFor="confirm-password" className="sr-only">
-                Confirm Password
-              </label>
+              <label className="sr-only">Confirm Password</label>
               <input
                 id="confirm-password"
                 name="confirmPassword"

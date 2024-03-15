@@ -23,7 +23,6 @@ import { Link } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 
 import Alert from "@mui/material/Alert";
-import { Avatar, Skeleton } from "@mui/material";
 
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -131,21 +130,25 @@ const Profile = () => {
     }
   };
 
-  const handleShowListing = async () => {
-    try {
-      setUserListingError(false);
+  useEffect(() => {
+    const res = async () => {
+      try {
+        setUserListingError(false);
 
-      const res = await axios.get(
-        `/api/v1/users/listing/${
-          currentUser?._id || user?._id || currentData?._id
-        }`
-      );
+        const res = await axios.get(
+          `/api/v1/users/listing/${
+            currentUser?._id || user?._id || currentData?._id
+          }`
+        );
 
-      setUserListing(res.data);
-    } catch (error) {
-      setUserListingError(true);
-    }
-  };
+        setUserListing(res.data);
+      } catch (error) {
+        setUserListingError(true);
+      }
+    };
+
+    res();
+  }, [currentUser, user, currentData]);
 
   const handleListingDelete = async (id) => {
     try {
@@ -317,13 +320,13 @@ const Profile = () => {
             See Your{" "}
             <span className="text-amber-600">Published Properties</span>
           </h1>
-          <button
+          {/* <button
             // to="/create-listing"
-            onClick={handleShowListing}
+            // onClick={handleShowListing}
             className="bg-[#213E5F] text-center text-white p-3 rounded-full w-1/2 text-2xl  hover:opacity-95  font-bold my-2"
-          >
-            My Properties
-          </button>
+          > */}
+          {/* My Properties
+          </button> */}
           {userListing.length === 0 && (
             <p className="text-red-600 font-semibold text-xl mt-0">
               No Properties Found
