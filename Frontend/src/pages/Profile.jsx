@@ -350,27 +350,27 @@ const Profile = () => {
             <div className="flex items-center justify-evenly  flex-wrap gap-4">
               {userListing.map((listing) => (
                 <div
-                  className="flex flex-wrap w-[60%] sm:w-[20%] h-[50vh]  border rounded-lg mb-10 relative"
+                  className="flex flex-wrap w-[60%] sm:w-[20%] h-[50vh]  border rounded-xl mb-10 relative"
                   key={listing._id}
                 >
                   <Link to={`/listing/${listing._id}`}>
                     <img
                       src={listing.imageUrls[0]}
                       alt="listing cover"
-                      className=" h-[60%] w-[100%] object-cover"
+                      className=" h-[60%] w-[100%] object-cover "
                     />
                     <h1 className=" text-center font-semibold mt-4 text-xs sm:text-lg">
                       {listing.name}
                     </h1>
                     <div className="flex sm:space-x-20 item-center left-3  space-x-10 sm:left-10 absolute bottom-5">
                       <Link to={`/update-listing/${listing._id}`}>
-                        <button className="bg-green-700 text-white p-2 w-[10vh]  rounded-lg font-semibold ">
+                        <button className="bg-green-700 text-white p-2 w-[10vh]  rounded-full font-semibold ">
                           Edit
                         </button>
                       </Link>
                       <button
                         onClick={() => handleListingDelete(listing._id)}
-                        className="bg-red-700 text-white p-2 rounded-lg  w-[10vh] font-semibold "
+                        className="bg-red-700 text-white p-2 rounded-full  w-[10vh] font-semibold "
                       >
                         Delete
                       </button>

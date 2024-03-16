@@ -1,53 +1,12 @@
-// import React from "react";
-
-// export default function About() {
-//   return (
-//     <div className=" px-4 py-14 mx-auto relative min-h-screen mb-[10%]">
-//       <h1 className="text-7xl  max-w-6xl text-center font-bold  mb-11 text-amber-700 ">
-//         About
-//       </h1>
-//       <hr className="mb-10 w-[80%] mx-auto" />
-//       <div className="p-7 w-[80%] mx-auto">
-//         <p className="mb-4  font-semibold text-lg w-full">
-//           Welcome to HomeFinder, your ultimate destination for finding your
-//           perfect home. Whether you're searching for a cozy apartment, a
-//           spacious house, or an investment property, HomeFinder is here to
-//           simplify your real estate journey.
-//           <br /> <br />
-//           <strong className="text-amber-700 font-bold"> Mission:</strong> At
-//           HomeFinder, our mission is to empower individuals and families to
-//           discover their dream homes with ease and confidence. We're committed
-//           to providing a seamless and personalized experience, connecting
-//           buyers, sellers, and renters in a transparent and efficient manner.{" "}
-//           <br /> <br />{" "}
-//           <strong className="text-amber-700 font-bold"> Features:</strong>{" "}
-//           Explore a vast selection of properties, including homes for sale,
-//           rent, and lease-to-own options. Customize your search with filters for
-//           price, location, size, amenities, and more to find properties that
-//           match your criteria. List your property with HomeFinder to reach a
-//           wide audience of potential buyers and tenants. Connect with trusted
-//           real estate agents and mortgage professionals for expert guidance and
-//           assistance. <br /> <br />{" "}
-//           <strong className="text-amber-700 font-bold"> Benifits:</strong>{" "}
-//           Experience the convenience and peace of mind that come with using
-//           HomeFinder: Access to verified property listings with comprehensive
-//           details and high-quality images. Tools and resources to help you make
-//           informed decisions, from mortgage calculators to neighborhood
-//           insights. Time-saving features like saved searches and property alerts
-//           to keep you updated on new listings. Opportunities to discover hidden
-//           gems and exclusive deals in the real estate market.
-//         </p>
-//       </div>
-//     </div>
-//   );
-// }
-
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
+import Diversity1Icon from "@mui/icons-material/Diversity1";
+import HomeIcon from "@mui/icons-material/Home";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import ApprovalIcon from "@mui/icons-material/Approval";
+import KeyIcon from "@mui/icons-material/Key";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const [offerListings, setOfferListings] = useState([]);
@@ -66,7 +25,7 @@ const About = () => {
   }, []);
   return (
     <div className="mx-auto relative min-h-screen ">
-      <div className="relative min-h-[50vh]">
+      <div className="relative min-h-[60vh]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -75,13 +34,112 @@ const About = () => {
             opacity: "0.4", // Adjust opacity as needed
           }}
         ></div>
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="absolute inset-0 bg-black opacity-50 border-b-2"></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
             About <span className="text-amber-700">us</span>
           </h1>
         </div>
       </div>
+
+      <div className="p-10">
+        <div>
+          <div className="px-4 py-6 sm:px-6 lg:px-8">
+            <div className="space-y-6">
+              <div className="space-y-2 mb-14">
+                <div className="text-center text-6xl font-bold text-white ">
+                  Welcome to<span className="text-amber-700"> Our Story</span>
+                </div>
+                <div className="text-center max-w-3xl mx-auto text-gray-300 ">
+                  Discover how we are shaping the future of collaboration and
+                  innovation.
+                </div>
+              </div>
+              <div className="space-y-4  bg-[#f3f4f6]  rounded-xl p-10 ">
+                <div className="space-y-2  ">
+                  <div className="text-2xl font-semibold text-black  mb-20 ">
+                    Meet Our Team
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4 lg:gap-6 text-black ">
+                    <div className="space-y-2 border-r-2 border-black min-h-[200px] m-6">
+                      <div className="flex items-center space-x-4">
+                        <img
+                          alt="Portrait of Sara Smith"
+                          className="rounded-full"
+                          height="80"
+                          src="https://remake.world/wp-content/uploads/2019/11/GinaBibby_537-Edit.jpg"
+                          style={{
+                            aspectRatio: "80/80",
+                            objectFit: "cover",
+                          }}
+                          width="80"
+                        />
+                        <div className="space-y-1.5">
+                          <div className="text-lg font-semibold ">
+                            Sara Smith
+                          </div>
+                          <div className="text-gray-500">Product Manager</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2 ">
+                        <p>
+                          Sara is passionate about building products that
+                          delight customers. She previously worked at a
+                          fast-growing startup where she learned the value of
+                          iteration and customer feedback.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-4 m-6">
+                        <img
+                          alt="Portrait of Alex Johnson"
+                          className="rounded-full"
+                          height="80"
+                          src="https://alexjohnson.me/nextImageExportOptimizer/alex-johnson-headshot-opt-750.WEBP"
+                          style={{
+                            aspectRatio: "80/80",
+                            objectFit: "cover",
+                          }}
+                          width="80"
+                        />
+                        <div className="space-y-1.5">
+                          <div className="text-lg font-semibold ">
+                            Alex Johnson
+                          </div>
+                          <div className="text-gray-500">Software Engineer</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2 ">
+                        <p>
+                          Alex is a full-stack developer with a love for elegant
+                          code. He's always exploring new technologies and
+                          enjoys collaborating with his team to solve complex
+                          problems.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2 text-black">
+                  <div className="text-2xl font-semibold ">Our Vision</div>
+                  <div className="text-gray-700">
+                    <p>
+                      At our core, we believe that great things happen when
+                      people work together. Our vision is to provide the tools
+                      and platform that enable teams to collaborate effectively,
+                      communicate seamlessly, and achieve more than they ever
+                      thought possible.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr className="mt-[10%] w-[80%] mx-auto" />
+
       <div className="flex items-center justify-center p-6 mt-[10%]">
         <div className="p-10 flex flex-col gap-11 max-w-[50%]">
           <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
@@ -107,13 +165,152 @@ const About = () => {
           />
         </div>
       </div>
-      <div className="div flex flex-col items-center mt-[10%] bg-">
+      <hr className="mt-[10%] w-[80%] mx-auto mb-10" />
+      <section className="py-12.5 lg:py-20 bg-[#161616]  dark:bg-gray-800">
+        <div className="container px-4">
+          <div className="grid gap-12.5 lg:gap-20 items-center space-y-10 lg:space-y-0 lg:grid-cols-2 mb-9 ">
+            <div className="space-y-5  ">
+              <h2 className="text-3xl font-bold tracking-tight  dark:text-gray-50">
+                Properties Showcase
+              </h2>
+              <p className="text-gray-500 md:w-[90%] xl:w-[80%]">
+                Explore our curated selection of exquisite properties that
+                redefine luxury living.
+              </p>
+            </div>
+            <div className="space-y-5 ">
+              <h2 className="text-3xl font-bold tracking-tight dark:text-gray-50">
+                Real Estate Solutions
+              </h2>
+              <p className="text-gray-500 md:w-[90%] xl:w-[80%]">
+                Providing innovative real estate solutions tailored to your
+                needs for a seamless experience.
+              </p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8 lg:gap-10 items-start">
+            <div className="flex flex-col items-center space-y-2.5 bg-white dark:bg-gray-700 p-4 rounded-xl border-black border-2  ">
+              <HomeIcon className="bg-black h-12 hover:cursor-pointer " />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Luxury Homes
+              </h3>
+              <p className="text-sm text-gray-500 text-center">
+                Discover exclusive luxury homes designed for the most discerning
+                buyers.
+              </p>
+            </div>
+            <div className="flex flex-col items-center space-y-2.5 bg-white dark:bg-gray-700 p-4 rounded-xl border-black border-2">
+              <ApartmentIcon className="bg-black h-12 hover:cursor-pointer " />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Commercial Spaces
+              </h3>
+              <p className="text-sm text-gray-500 text-center">
+                Explore prime commercial spaces ideal for businesses looking to
+                thrive.
+              </p>
+            </div>
+            <div className="flex flex-col items-center space-y-2.5 bg-white dark:bg-gray-700 p-4 rounded-xl border-black border-2">
+              <ApprovalIcon className="bg-black h-12 hover:cursor-pointer " />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Land Investments
+              </h3>
+              <p className="text-sm text-gray-500 text-center">
+                Invest in promising land opportunities for future development
+                projects.
+              </p>
+            </div>
+            <div className="flex flex-col items-center space-y-2.5 bg-white dark:bg-gray-700 p-4 rounded-xl border-black border-2">
+              <KeyIcon className="bg-black h-12 hover:cursor-pointer " />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Estate Management
+              </h3>
+              <p className="text-sm text-gray-500 text-center">
+                Comprehensive estate management services for hassle-free
+                property ownership.
+              </p>
+            </div>
+            <div className="flex flex-col items-center space-y-2.5 bg-white dark:bg-gray-700 p-4 rounded-xl border-black border-2">
+              <Diversity1Icon className="bg-black h-12 hover:cursor-pointer " />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Key Partnerships
+              </h3>
+              <p className="text-sm text-gray-500 text-center">
+                Building strong partnerships to deliver exceptional real estate
+                solutions.
+              </p>
+            </div>
+            <div className="flex flex-col items-center space-y-2.5 bg-white dark:bg-gray-700 p-4 rounded-xl border-black border-2 ">
+              <Diversity1Icon className="bg-black h-12 hover:cursor-pointer " />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
+                Client Relationships
+              </h3>
+              <p className="text-sm text-gray-500 text-center">
+                Nurturing client relationships with trust, integrity, and
+                transparency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr className="mt-[10%] w-[80%] mx-auto" />
+      <div className="div flex flex-col items-center mt-[10%] ">
         <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
           <span className="text-amber-700"> What</span> We Offer
         </h1>
         <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
           <span className="text-amber-700"> For</span> You
         </h1>
+        <p className="text-slate-300 text-lg max-w-5xl mt-[5%]">
+          EstateWeb is dedicated to providing top-quality services in buying,
+          selling, consultancy, and marketing, with a focus on innovation,
+          sustainability, and customer care. With offices in Lahore and
+          Islamabad, our integrated approach includes creating investment
+          portfolios, analyzing market risks, and implementing effective digital
+          marketing strategies. We prioritize our clients' needs and aim for
+          continued expansion while maintaining strong community relationships.
+          Our commitment is to build a world-class real estate agency that
+          offers innovative products and sustainable solutions
+        </p>
+        <p className="text-slate-300 text-lg max-w-5xl ">
+          our integrated approach includes creating investment portfolios,
+          analyzing market risks, and implementing effective digital marketing
+          strategies. We prioritize our clients
+        </p>
+      </div>
+      <hr className="mt-[10%] w-[80%] mx-auto" />
+      <div className="flex  justify-around m-10 items-center p-10">
+        <div className="div">
+          <h1 className="text-4xl w-[80%] font-bold">
+            Streamline your business operations and maximize cost-efficiency
+            with our trusted services
+          </h1>
+          <p className="mt-5 w-[80%] text-slate-400">
+            Real Estate welcome all customer to do business with us. We gives
+            you 100% satisfaction deals. Our customer are always happy and
+            satisfied with us. Limited time deals are also available. Gives us a
+            call and we will help you to secure your dream.
+          </p>
+
+          <h1 className="text-3xl font-bold mt-5">Call for book an order:</h1>
+          <div className="flex justify-evenly mt-8 mr-[15%]">
+            <p className="border border-amber-500  p-4 font-bold  text-center text-xl rounded-full  mt-5">
+              +91 9876543210
+            </p>
+            <Link
+              to={"/contact"}
+              className="bg-amber-500 text-white p-4 font-bold w-[30%] text-center text-xl rounded-full  mt-5 "
+            >
+              Contact Us{" "}
+            </Link>
+          </div>
+        </div>
+        <div className="div">
+          <img
+            src="https://www.fujitsu.com/us/imagesgig5/contactus_tcm127-6317963_tcm127-6286607-32.jpg"
+            alt="img"
+            className="rounded-3xl"
+          />
+        </div>
       </div>
     </div>
   );

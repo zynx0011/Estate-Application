@@ -21,7 +21,7 @@ const Contact = () => {
       <hr className=" md:w-[80%] mx-auto mb-6 md:mb-10" />
 
       <div className="p-4 grid md:grid-cols-2 gap-6 mt-14 items-center justify-center">
-        <div className="bg-amber-700 w-full p-8 md:p-10 rounded-lg mb-6 md:mb-0 md:w-full md:max-w-sm md:ml-[25%]">
+        <div className="bg-amber-600 w-full p-8 md:p-10 rounded-lg mb-6 md:mb-0 md:w-full md:max-w-sm md:ml-[25%]">
           <h1 className="text-2xl md:text-3xl font-bold mb-4 ">
             <span className="text-white">Contact Us</span>
           </h1>
@@ -73,7 +73,7 @@ const Contact = () => {
             <Link
               to={`mailto:"abc@gmail.com"?subject=Regarding:"Estate Application"&body=${message}`}
             >
-              <button className="w-full p-3 mt-5 bg-amber-700 text-white font-semibold text-sm focus:outline-none">
+              <button className="w-full p-3 mt-5 bg-amber-600 text-white font-semibold text-sm focus:outline-none">
                 Submit
               </button>
             </Link>
