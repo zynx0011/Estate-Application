@@ -20,10 +20,12 @@ app.use(cookieParser());
 //routes import
 import userRouter from "./routes/user.routes.js";
 import listingRouter from "./routes/listing.routes.js";
+import favoriteListing from "./routes/Favorite.routes.js";
 
 //routes declaration
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/listing", listingRouter);
+app.use("/api/v1/users/favorite-listing", favoriteListing);
 
 // http://localhost:8000/api/v1/users/register
 

@@ -286,60 +286,6 @@ const updateAccoutDetails = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, { user }, "User updated successfully"));
 });
 
-// const google = asyncHandler(async (req, res) => {
-//   const user = await User.findOne({ email: req.body.email });
-//   console.log(req.body.email);
-//   console.log(user);
-
-//   if (user) {
-//     const loggedInUser = await User.findById(user._id);
-
-//     const { accessToken, refreshToken } =
-//       await generateAccessTokenandRefreshToken(user._id);
-
-//     return res.status(200).json(
-//       new ApiResponse(
-//         200,
-//         {
-//           user: loggedInUser,
-//           accessToken,
-//           refreshToken,
-//         },
-//         "user loggedIn successfully"
-//       )
-//     );
-//   }
-
-//   if (!user) {
-//     const generatedPassword =
-//       Math.random().toString(36).slice(-8) +
-//       Math.random().toString(36).slice(-8);
-//     const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
-
-//     console.log(req.body.email);
-
-//     const createuser = await User.create({
-//       email: req.body.email,
-//       username: req.body.name,
-//       password: hashedPassword,
-//       profilePicture: req.body.photo,
-//     });
-
-//     if (!createuser) {
-//       throw new ApiError(400, "user not created");
-//     }
-//   }
-
-//   const { accessToken, refreshToken } =
-//     await generateAccessTokenandRefreshToken(user._id);
-
-//   return res
-//     .status(200)
-//     .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true })
-//     .cookie("accessToken", accessToken, { httpOnly: true, secure: true })
-//     .json(new ApiResponse(200, { user }, "user created successfully"));
-// });
-
 const google = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -850,7 +796,7 @@ const forgotPassword = async (req, res) => {
 
 const resetPassword = asyncHandler(async (req, res) => {
   const { id, token } = req.params;
-  console.log(id, "Reset Password");
+  // console.log(id, "Reset Password");
   const existeduser = await User.findOne({ _id: id });
 
   if (!existeduser) {

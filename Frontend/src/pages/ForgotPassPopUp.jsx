@@ -34,13 +34,15 @@ const NewPasswordPage = () => {
     try {
       // Check if passwords match
 
-      const res = await axios.get(
+      const res = await axios.post(
         `/api/v1/users/reset-password/${userId}/${token}`,
         {
           newPassword,
           confirmPassword,
         }
       );
+
+      // console.log(res.data, "this is rest password");
 
       setSuccess(true);
       // setTimeout(() => {
