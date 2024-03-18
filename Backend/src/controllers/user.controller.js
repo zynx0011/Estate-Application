@@ -64,6 +64,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
+    sameSite: "none",
   };
   if (!createdUser) {
     throw new ApiError(500, "Something went wrong while registering the user");
@@ -107,6 +108,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
+    sameSite: "none",
   };
 
   return res
@@ -173,6 +175,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     const option = {
       httpOnly: true,
       secure: true,
+      sameSite: "none",
     };
 
     const { newrefreshToken, accessToken } =
