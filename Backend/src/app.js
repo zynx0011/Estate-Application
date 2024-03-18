@@ -7,7 +7,7 @@ const app = express();
 // cross origin resource sharing  - it will check the frontend with port
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: "https://estate-application.vercel.app",
     credentials: true,
   })
 );
