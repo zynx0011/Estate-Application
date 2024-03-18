@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.15.13",
     "@mui/material": "^5.15.13",
     "@radix-ui/react-slot": "^1.0.2",
+    "@reduxjs/toolkit": "^2.2.1",
     "axios": "^1.6.5",
     "bootstrap": "^5.3.3",
     "cal-sans": "^1.0.1",
