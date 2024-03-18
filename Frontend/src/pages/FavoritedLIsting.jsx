@@ -5,6 +5,7 @@ import ListingItem from "../components/ListingItem";
 import { Link } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { BASE_URL } from "../Config/config";
 const FavoritedLIsting = () => {
   const [FavoritedListing, setFavoritedListing] = useState([]);
   // console.log(FavoritedListing);
@@ -15,7 +16,7 @@ const FavoritedLIsting = () => {
     const fetchFavoritedListing = async () => {
       try {
         const response = await axios.get(
-          `/api/v1/users/favorite-listing/get/favoriteListing/${
+          `${BASE_URL}/api/v1/users/favorite-listing/get/favoriteListing/${
             currentUser?._id || user?._id
           }`
         );
@@ -33,7 +34,7 @@ const FavoritedLIsting = () => {
     try {
       console.log(id);
       const res = await axios.delete(
-        `/api/v1/users/favorite-listing/delete/favoriteListing/${id}`
+        `${BASE_URL}/api/v1/users/favorite-listing/delete/favoriteListing/${id}`
       );
       setFavoritedListing((prev) => prev.filter((item) => item._id !== id));
       console.log(res);

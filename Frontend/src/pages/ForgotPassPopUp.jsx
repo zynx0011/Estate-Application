@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../Config/config";
 
 const NewPasswordPage = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -35,7 +36,7 @@ const NewPasswordPage = () => {
       // Check if passwords match
 
       const res = await axios.post(
-        `/api/v1/users/reset-password/${userId}/${token}`,
+        `${BASE_URL}/api/v1/users/reset-password/${userId}/${token}`,
         {
           newPassword,
           confirmPassword,

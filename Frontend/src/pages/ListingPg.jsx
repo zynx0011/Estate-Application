@@ -16,7 +16,7 @@ import {
   FaShare,
 } from "react-icons/fa";
 import Contact from "../components/Contact";
-import FavoritedLIsting from "./FavoritedLIsting";
+import { BASE_URL } from "../Config/config";
 // import Rating from "@mui/material/Rating";
 
 const ListingPg = () => {
@@ -41,7 +41,7 @@ const ListingPg = () => {
     const favorites = async () => {
       try {
         const res = await axios.get(
-          `/api/v1/users/favorite-listing/favoriteListing/${listingId}`
+          `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`
         );
         setCheckFavorite(true);
       } catch (error) {
@@ -61,7 +61,7 @@ const ListingPg = () => {
         // console.log(listingId, "this is listing id");
 
         const res = await axios.get(
-          `/api/v1/users/favorite-listing/favoriteListing/${listingId}`
+          `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`
         );
         // console.log(res);
         setRating(true);
@@ -78,7 +78,9 @@ const ListingPg = () => {
         setLoading(true);
         setError(false);
         const listingId = params.listingId;
-        const res = await axios.get(`/api/v1/listing/get/${listingId}`);
+        const res = await axios.get(
+          `${BASE_URL}/api/v1/listing/get/${listingId}`
+        );
 
         console.log(res.data.data);
         setFormData(res.data.data);

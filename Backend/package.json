@@ -1,5 +1,5 @@
 {
-  "name": "chai-backend",
+  "name": "estate-backend",
   "version": "1.0.0",
   "description": "a backend at chai aur code channel - youtube",
   "type": "module",
@@ -8,12 +8,6 @@
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
     
   },
-  "keywords": [
-    "javascript",
-    "backend",
-    "chai"
-  ],
-  "author": "Hitesh Choudhary",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.0.1",

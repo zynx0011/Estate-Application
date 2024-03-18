@@ -1,6 +1,3 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import HomeIcon from "@mui/icons-material/Home";
 import ApartmentIcon from "@mui/icons-material/Apartment";
@@ -9,20 +6,6 @@ import KeyIcon from "@mui/icons-material/Key";
 import { Link } from "react-router-dom";
 
 const About = () => {
-  const [offerListings, setOfferListings] = useState([]);
-  // console.log(offerListings);
-  useEffect(() => {
-    const fetchOfferListings = async () => {
-      try {
-        const res = await axios.get("/api/v1/listing/get");
-        setOfferListings(res.data.data);
-        fetchRentListings();
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchOfferListings();
-  }, []);
   return (
     <div className="mx-auto relative min-h-screen ">
       <div className="relative min-h-[60vh]">

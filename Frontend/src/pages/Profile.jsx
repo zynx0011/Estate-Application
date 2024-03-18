@@ -21,7 +21,7 @@ import {
 } from "../store/authSlice.js";
 import { Link } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
-
+import { BASE_URL } from "../Config/config.js";
 import Alert from "@mui/material/Alert";
 
 const Profile = () => {
@@ -86,7 +86,7 @@ const Profile = () => {
     try {
       dispatch(updateUserStart());
       const res = await axios.post(
-        `/api/v1/users/update-account/${
+        `${BASE_URL}/api/v1/users/update-account/${
           currentUser?._id || user?._id || currentData?._id
         }`,
 
@@ -110,7 +110,7 @@ const Profile = () => {
     try {
       dispatch(deleteUserStart());
       const res = await axios.delete(
-        `/api/v1/users/delete-account/${
+        `${BASE_URL}/api/v1/users/delete-account/${
           currentUser?._id || user?._id || currentData._id
         }`
       );
@@ -124,7 +124,7 @@ const Profile = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.get("/api/v1/users/logout");
+      await axios.get(`${BASE_URL}/api/v1/users/logout`);
       dispatch(signOut());
     } catch (error) {
       console.log("Error while signing out", error);
@@ -137,7 +137,7 @@ const Profile = () => {
         setUserListingError(false);
 
         const res = await axios.get(
-          `/api/v1/users/listing/${
+          `${BASE_URL}/api/v1/users/listing/${
             currentUser?._id || user?._id || currentData?._id
           }`
         );
@@ -153,7 +153,7 @@ const Profile = () => {
 
   const handleListingDelete = async (id) => {
     try {
-      const res = await axios.delete(`/api/v1/listing/delete/${id}`);
+      const res = await axios.delete(`${BASE_URL}/api/v1/listing/delete/${id}`);
 
       setUserListing((prev) => prev.filter((item) => item._id !== id));
     } catch (error) {

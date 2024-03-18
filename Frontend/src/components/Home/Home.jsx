@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import { BASE_URL } from "../../Config/config";
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
@@ -110,7 +111,9 @@ export default function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await axios.get("/api/v1/listing/get?/offer=true&limit=4");
+        const res = await axios.get(
+          `${BASE_URL}/api/v1/listing/get?/offer=true&limit=4`
+        );
         setOfferListings(res.data.data);
         fetchRentListings();
       } catch (error) {
@@ -119,7 +122,9 @@ export default function Home() {
     };
     const fetchRentListings = async () => {
       try {
-        const res = await axios.get("/api/v1/listing/get?/type=rent&limit=4");
+        const res = await axios.get(
+          `${BASE_URL}/api/v1/listing/get?/type=rent&limit=4`
+        );
         setRentListings(res.data.data);
         fetchSaleListings();
       } catch (error) {
@@ -129,7 +134,9 @@ export default function Home() {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await axios.get("/api/v1/listing/get?/type=sale&limit=4");
+        const res = await axios.get(
+          `${BASE_URL}/api/v1/listing/get?/type=sale&limit=4`
+        );
         setSaleListings(res.data.data);
       } catch (error) {
         log(error);

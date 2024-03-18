@@ -9,6 +9,7 @@ import {
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../Config/config";
 
 const Listing = () => {
   const [formData, setFormData] = useState({
@@ -149,7 +150,7 @@ const Listing = () => {
       // if (data.success === false) {
       //   setError(data.message);
       // }
-      const res = await axios.post("/api/v1/listing/create", {
+      const res = await axios.post(`${BASE_URL}/api/v1/listing/create`, {
         ...formData,
         userRef: data?._id || currentUser?._id,
       });

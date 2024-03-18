@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
 import axios from "axios";
+import { BASE_URL } from "../Config/config";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -53,7 +54,9 @@ export default function Search() {
       setLoading(true);
       setShowMore(false);
       const searchQuery = urlParams.toString();
-      const res = await axios.get(`/api/v1/listing/get/?${searchQuery}`);
+      const res = await axios.get(
+        `${BASE_URL}/api/v1/listing/get/?${searchQuery}`
+      );
       if (res.data.length > 8) {
         setShowMore(true);
       } else {
@@ -120,7 +123,7 @@ export default function Search() {
     const urlParams = new URLSearchParams(location.search);
     urlParams.set("startIndex", startIndex);
     const searchQuery = urlParams.toString();
-    const res = await fetch(`/api/v1/listing/get?${searchQuery}`);
+    const res = await fetch(`${BASE_URL}/api/v1/listing/get?${searchQuery}`);
     const data = await res.json();
     if (data.length < 9) {
       setShowMore(false);

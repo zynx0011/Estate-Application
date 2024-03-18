@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { app } from "../FireBase";
 import {
   getDownloadURL,
@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { BASE_URL } from "../Config/config";
 
 const Listing = () => {
   const [formData, setFormData] = useState({
@@ -151,7 +152,7 @@ const Listing = () => {
       //   setError(data.message);
       // }
       const res = await axios.post(
-        `/api/v1/listing/update/${params.listingId}`,
+        `${BASE_URL}/api/v1/listing/update/${params.listingId}`,
         {
           ...formData,
           userRef: data?._id,
@@ -171,7 +172,9 @@ const Listing = () => {
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.listingId;
-      const res = await axios.get(`/api/v1/listing/get/${listingId}`);
+      const res = await axios.get(
+        `${BASE_URL}/api/v1/listing/get/${listingId}`
+      );
       console.log(res.data.data);
       setFormData(res.data.data);
     };

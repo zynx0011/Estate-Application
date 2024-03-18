@@ -1,6 +1,4 @@
-import React from "react";
-import axios from "axios";
-
+import { BASE_URL } from "../Config/config";
 const ForgotPass = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -10,7 +8,7 @@ const ForgotPass = () => {
 
     try {
       setError(false);
-      const response = await fetch("/api/v1/users/forgotPassword", {
+      const response = await fetch(`${BASE_URL}/api/v1/users/forgotPassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

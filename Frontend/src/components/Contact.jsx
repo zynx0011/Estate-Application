@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../Config/config";
 
 export default function Contact({ formdata }) {
   console.log(formdata?.userRef);
@@ -13,7 +14,9 @@ export default function Contact({ formdata }) {
   useEffect(() => {
     const fetchLandlord = async () => {
       try {
-        const res = await axios.get(`/api/v1/users/${formdata?.userRef}`);
+        const res = await axios.get(
+          `${BASE_URL}/api/v1/users/${formdata?.userRef}`
+        );
         console.log(res);
         setLandlord(res.data);
       } catch (error) {

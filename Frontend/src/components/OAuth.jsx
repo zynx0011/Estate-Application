@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { signInSuccess } from "../store/authSlice.js";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../Config/config.js";
 const OAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const OAuth = () => {
       const auth = getAuth(app);
       const response = await signInWithPopup(auth, provider);
       console.log(response.user);
-      const res = await axios.post("/api/v1/users/google", {
+      const res = await axios.post(`${BASE_URL}/api/v1/users/google`, {
         name: response.user.displayName,
         email: response.user.email,
         profilePicture: response.user.photoURL,
