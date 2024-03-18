@@ -16,9 +16,12 @@ import {
   FaShare,
 } from "react-icons/fa";
 import Contact from "../components/Contact";
+import FavoritedLIsting from "./FavoritedLIsting";
+// import Rating from "@mui/material/Rating";
 
 const ListingPg = () => {
   const params = useParams();
+  // console.log(useParams());
   const { currentUser } = useSelector((state) => state.auth);
   const data = currentUser?.data?.data?.user;
   const [formData, setFormData] = useState({});
@@ -26,8 +29,49 @@ const ListingPg = () => {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
-  console.log(formData);
+  const [rating, setRating] = useState(false);
+  const [checkFavorite, setCheckFavorite] = useState(false);
+  console.log(checkFavorite);
+  const { listingId } = useParams();
+
+  // console.log(formData);
   SwiperCore.use([Navigation]);
+
+  useEffect(() => {
+    const favorites = async () => {
+      try {
+        const res = await axios.get(
+          `/api/v1/users/favorite-listing/favoriteListing/${listingId}`
+        );
+        setCheckFavorite(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    favorites();
+  });
+
+  const sumbitHandlerFavorite = async (e) => {
+    e.preventDefault();
+    setCheckFavorite(!checkFavorite);
+    // console.log(listingId, "this is listing id");
+
+    try {
+      if (rating) {
+        // console.log(listingId, "this is listing id");
+
+        const res = await axios.get(
+          `/api/v1/users/favorite-listing/favoriteListing/${listingId}`
+        );
+        // console.log(res);
+        setRating(true);
+        setCheckFavorite(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const fetchListing = async () => {
       try {
@@ -97,6 +141,7 @@ const ListingPg = () => {
               }}
             />
           </div>
+
           {copied && (
             <p className="fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p-2">
               Link copied!
@@ -121,6 +166,29 @@ const ListingPg = () => {
                   ${+formData.regularPrice - +formData.discountPrice} OFF
                 </p>
               )}
+              {/* <Rating
+                name="simple-controlled"
+                size="large"
+                value={rating}
+                className={`bg-white ${
+                  rating ? "text-red-500" : "text-yellow-500"
+                }`}
+                onClick={sumbitHandlerFavorite}
+                onChange={(event, newValue) => {
+                  setRating(newValue);
+                }}
+                max={1} // Set max prop to 1 to display only one star
+              /> */}
+              <span
+                onClick={sumbitHandlerFavorite}
+                style={{
+                  cursor: "pointer",
+                  color: checkFavorite ? "gray" : "gold",
+                  fontSize: "1.5rem",
+                }}
+              >
+                &#9733;
+              </span>
             </div>
             <p className="text-slate-800">
               <span className="font-semibold text-black">Description - </span>

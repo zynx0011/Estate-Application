@@ -28,6 +28,7 @@ const Profile = () => {
   const { currentUser } = useSelector((state) => state.auth);
   const user = currentUser?.data?.data?.user;
   const currentData = currentUser?.data;
+  console.log(currentUser);
   const fileRef = useRef(null);
   const [image, setImage] = useState(undefined);
   const [imagePercent, setImagePercent] = useState(0);
@@ -301,6 +302,18 @@ const Profile = () => {
               </span>
             </Link>
           </div>
+        </div>
+        <div className="">
+          {" "}
+          <Link
+            to={`/FavoritedListing/${
+              user?._id || currentUser?._id || currentData?._id
+            }`}
+          >
+            <span className="bg-amber-700 text-white  cursor-pointer p-3 rounded-2xl  font-bold ">
+              Show Favorited Properties
+            </span>
+          </Link>
         </div>
         <hr className=" w-full" />
         <div className="flex flex-col gap-20 justify-center items-center min-h-[50vh]">

@@ -188,6 +188,8 @@ export default function Home() {
           </form>
         </div>
       </div>
+
+      {/* second section  */}
       <div className="flex  justify-around m-10 items-center p-10">
         <div className="div">
           <h1 className="text-4xl font-bold">
@@ -207,7 +209,7 @@ export default function Home() {
             </p>
             <Link
               to={"/contact"}
-              className="bg-amber-500 text-white p-4 font-bold w-[30%] text-center text-xl rounded-full  mt-5 "
+              className="bg-amber-500 text-white p-4 font-bold w-[30%] text-center text-xl rounded-full  mt-5  mr-7"
             >
               Book Now{" "}
             </Link>
@@ -221,6 +223,8 @@ export default function Home() {
           />
         </div>
       </div>
+
+      {/* third section  */}
       <div className="p-6 bg-[#161616]  opacity-100  mt-7   ">
         <h1 className="text-4xl font-bold  text-center mb-9">
           Current projects and More

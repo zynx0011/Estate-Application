@@ -26,6 +26,7 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import ForgotPass from "./pages/ForgotPass.jsx";
 import ForgotPassPopUp from "./pages/ForgotPassPopUp.jsx";
+import FavoritedLIsting from "./pages/FavoritedLIsting.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -49,6 +50,10 @@ const router = createBrowserRouter(
         <Route path="/change-password" element={<ChangePass />} />
         <Route path="/create-listing" element={<Listing />} />
         <Route path="/update-listing/:listingId" element={<UpdateListing />} />
+        <Route
+          path="/FavoritedListing/:userId"
+          element={<FavoritedLIsting />}
+        />
       </Route>
     </Route>
   )
