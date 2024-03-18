@@ -295,15 +295,15 @@ const google = async (req, res) => {
       const { accessToken, refreshToken } =
         await generateAccessTokenandRefreshToken(user._id);
       const { password: hashedPassword, ...rest } = user._doc;
-      const expiryDate = new Date(Date.now() + 3600000); // 1 hour
+      // const expiryDate = new Date(Date.now() + 3600000); // 1 hour
       res
         .cookie("accessToken", accessToken, {
           httpOnly: true,
-          expires: expiryDate,
+          // expires: expiryDate,
         })
         .cookie("refreshToken", refreshToken, {
           httpOnly: true,
-          expires: expiryDate,
+          // expires: expiryDate,
         })
         .status(200)
         .json(rest);

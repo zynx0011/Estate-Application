@@ -203,13 +203,13 @@ export default function Home() {
           </p>
 
           <h1 className="text-3xl font-bold mt-5">Call for book an order:</h1>
-          <div className="flex justify-evenly mt-8 mr-[15%]">
-            <p className="border border-amber-500  p-4 font-bold  text-center text-xl rounded-full  mt-5">
+          <div className="flex  sm:justify-evenly mt-8 mr-[15%]">
+            <p className="border border-amber-500 hidden sm:block p-4 font-bold  text-center text-xl rounded-full  mt-5">
               +91 9876543210
             </p>
             <Link
               to={"/contact"}
-              className="bg-amber-500 text-white p-4 font-bold w-[30%] text-center text-xl rounded-full  mt-5  mr-7"
+              className="bg-amber-500 text-white p-4 font-bold sm:w-[30%] text-center text-xl rounded-full  mt-5  mr-7"
             >
               Book Now{" "}
             </Link>
@@ -219,7 +219,7 @@ export default function Home() {
           <img
             src="https://res.cloudinary.com/myhq/image/upload/workspaces/bhive11-mohancooperativeindustrialestate/1.jpg"
             alt="img"
-            className="rounded-3xl"
+            className="rounded-3xl hidden sm:block"
           />
         </div>
       </div>

@@ -61,7 +61,7 @@ const About = () => {
                     Meet Our Team
                   </div>
                   <div className="grid md:grid-cols-2 gap-4 lg:gap-6 text-black ">
-                    <div className="space-y-2 border-r-2 border-black min-h-[200px] m-6">
+                    <div className="space-y-2 sm:border-r-2 border-black min-h-[200px] m-6">
                       <div className="flex items-center space-x-4">
                         <img
                           alt="Portrait of Sara Smith"
@@ -140,8 +140,8 @@ const About = () => {
       </div>
       <hr className="mt-[10%] w-[80%] mx-auto" />
 
-      <div className="flex items-center justify-center p-6 mt-[10%]">
-        <div className="p-10 flex flex-col gap-11 max-w-[50%]">
+      <div className="flex flex-col sm:flex-row items-center justify-center p-6 mt-[10%]">
+        <div className="p-10 flex flex-col gap-11 sm:max-w-[50%]">
           <h1 className="text-[#ffffff] text-6xl font-bold shadow-lg">
             <span className="text-amber-700"> Who</span> We Are
           </h1>
@@ -278,9 +278,9 @@ const About = () => {
         </p>
       </div>
       <hr className="mt-[10%] w-[80%] mx-auto" />
-      <div className="flex  justify-around m-10 items-center p-10">
+      <div className="flex  justify-around sm:m-10 items-center p-10">
         <div className="div">
-          <h1 className="text-4xl w-[80%] font-bold">
+          <h1 className="text-4xl sm:w-[80%] font-bold">
             Streamline your business operations and maximize cost-efficiency
             with our trusted services
           </h1>
@@ -293,12 +293,12 @@ const About = () => {
 
           <h1 className="text-3xl font-bold mt-5">Call for book an order:</h1>
           <div className="flex justify-evenly mt-8 mr-[15%]">
-            <p className="border border-amber-500  p-4 font-bold  text-center text-xl rounded-full  mt-5">
+            <p className="border hidden sm:block border-amber-500  p-4 font-bold  text-center text-xl rounded-full  mt-5">
               +91 9876543210
             </p>
             <Link
               to={"/contact"}
-              className="bg-amber-500 text-white p-4 font-bold w-[30%] text-center text-xl rounded-full  mt-5 "
+              className="bg-amber-500 text-white p-4 font-bold sm:w-[30%] text-center  text-xl rounded-full  mt-5 "
             >
               Contact Us{" "}
             </Link>
@@ -308,7 +308,7 @@ const About = () => {
           <img
             src="https://www.fujitsu.com/us/imagesgig5/contactus_tcm127-6317963_tcm127-6286607-32.jpg"
             alt="img"
-            className="rounded-3xl"
+            className="rounded-3xl hidden sm:block"
           />
         </div>
       </div>

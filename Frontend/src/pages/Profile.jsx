@@ -309,13 +309,14 @@ const Profile = () => {
             to={`/FavoritedListing/${
               user?._id || currentUser?._id || currentData?._id
             }`}
+            className=""
           >
-            <span className="bg-amber-700 text-white  cursor-pointer p-3 rounded-2xl  font-bold ">
+            <span className="bg-amber-700 text-white  cursor-pointer p-3 rounded-3xl  font-bold ">
               Show Favorited Properties
             </span>
           </Link>
         </div>
-        <hr className=" w-full" />
+        <hr className=" mt-7 w-full" />
         <div className="flex flex-col gap-20 justify-center items-center min-h-[50vh]">
           <h1 className="text-5xl font-bold text-center my-2">
             Want To <span className="text-amber-600">Publish Property</span>

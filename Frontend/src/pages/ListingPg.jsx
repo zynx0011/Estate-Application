@@ -123,12 +123,14 @@ const ListingPg = () => {
               ))}
             </Swiper>
           )}
-          <h1 className="text-center font-semibold text-3xl">
-            {formData.name}
-          </h1>
-          <h1 className="text-center font-semibold text-xl">
-            {formData.description}
-          </h1>
+          <div className="flex flex-col  items-center mr-[27%]">
+            <h1 className=" font-semibold text-3xl p-10 mr-[20%]">
+              {formData.name}
+            </h1>
+            <h1 className=" font-semibold text-xl m-auto ml-[30%] text-gray-500">
+              {formData.description}
+            </h1>
+          </div>
           <div className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer">
             <FaShare
               className="text-slate-500"
@@ -190,11 +192,11 @@ const ListingPg = () => {
                 &#9733;
               </span>
             </div>
-            <p className="text-slate-800">
-              <span className="font-semibold text-black">Description - </span>
+            <p className="">
+              <span className="font-bold ">Description - </span>
               {formData.description}
             </p>
-            <ul className="text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6">
+            <ul className="text-green-500 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6">
               <li className="flex items-center gap-1 whitespace-nowrap ">
                 <FaBed className="text-lg" />
                 {formData.bedrooms > 1
