@@ -124,9 +124,21 @@ const ListingPg = () => {
             </Swiper>
           )}
           <div className="flex flex-col  items-center mr-[27%]">
-            <h1 className=" font-semibold text-3xl p-10 mr-[20%]">
+            <h1 className=" font-semibold text-3xl flex gap-7 p-10 mr-[20%]  ">
               {formData.name}
+              <span
+                className="flex justify-center items-center "
+                onClick={sumbitHandlerFavorite}
+                style={{
+                  cursor: "pointer",
+                  color: checkFavorite ? "gray" : "gold",
+                  fontSize: "2.5rem",
+                }}
+              >
+                &#9733;
+              </span>
             </h1>
+
             <h1 className=" font-semibold text-xl m-auto ml-[30%] text-gray-500">
               {formData.description}
             </h1>
@@ -181,17 +193,8 @@ const ListingPg = () => {
                 }}
                 max={1} // Set max prop to 1 to display only one star
               /> */}
-              <span
-                onClick={sumbitHandlerFavorite}
-                style={{
-                  cursor: "pointer",
-                  color: checkFavorite ? "gray" : "gold",
-                  fontSize: "1.5rem",
-                }}
-              >
-                &#9733;
-              </span>
             </div>
+
             <p className="">
               <span className="font-bold ">Description - </span>
               {formData.description}
@@ -230,6 +233,16 @@ const ListingPg = () => {
               )}
             {contact && <Contact formdata={formData} />}
           </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10005803.565863715!2d-127.06750599826638!3d36.000460265333004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb9fe5f285e3d%3A0x8b5109a227086f55!2sCalifornia%2C%20USA!5e0!3m2!1sen!2sin!4v1710763872121!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            // style="border:0;"
+            className="w-full h-[300px] sm:h-[700px] object-cover"
+            allowfullscreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       )}
     </main>
