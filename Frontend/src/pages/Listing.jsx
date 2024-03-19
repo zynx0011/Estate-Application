@@ -150,10 +150,16 @@ const Listing = () => {
       // if (data.success === false) {
       //   setError(data.message);
       // }
-      const res = await axios.post(`${BASE_URL}/api/v1/listing/create`, {
-        ...formData,
-        userRef: data?._id || currentUser?._id,
-      });
+      const res = await axios.post(
+        `${BASE_URL}/api/v1/listing/create`,
+        {
+          ...formData,
+          userRef: data?._id || currentUser?._id,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       setLoading(false);
       if (res.data.success === false) {
         setError(res.data.message);

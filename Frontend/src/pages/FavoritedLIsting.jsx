@@ -18,7 +18,10 @@ const FavoritedLIsting = () => {
         const response = await axios.get(
           `${BASE_URL}/api/v1/users/favorite-listing/get/favoriteListing/${
             currentUser?._id || user?._id
-          }`
+          }`,
+          {
+            withCredentials: true,
+          }
         );
 
         // console.log(response);
@@ -34,7 +37,10 @@ const FavoritedLIsting = () => {
     try {
       console.log(id);
       const res = await axios.delete(
-        `${BASE_URL}/api/v1/users/favorite-listing/delete/favoriteListing/${id}`
+        `${BASE_URL}/api/v1/users/favorite-listing/delete/favoriteListing/${id}`,
+        {
+          withCredentials: true,
+        }
       );
       setFavoritedListing((prev) => prev.filter((item) => item._id !== id));
       console.log(res);

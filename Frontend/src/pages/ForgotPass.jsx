@@ -8,13 +8,19 @@ const ForgotPass = () => {
 
     try {
       setError(false);
-      const response = await fetch(`${BASE_URL}/api/v1/users/forgotPassword`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${BASE_URL}/api/v1/users/forgotPassword`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
         },
-        body: JSON.stringify({ email }),
-      });
+        {
+          withCredentials: true,
+        }
+      );
 
       if (response.ok) {
         // Email sent successfully

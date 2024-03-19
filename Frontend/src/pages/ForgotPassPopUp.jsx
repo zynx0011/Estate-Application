@@ -40,6 +40,9 @@ const NewPasswordPage = () => {
         {
           newPassword,
           confirmPassword,
+        },
+        {
+          withCredentials: true,
         }
       );
 

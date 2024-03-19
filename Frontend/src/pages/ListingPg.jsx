@@ -41,7 +41,10 @@ const ListingPg = () => {
     const favorites = async () => {
       try {
         const res = await axios.get(
-          `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`
+          `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`,
+          {
+            withCredentials: true,
+          }
         );
         setCheckFavorite(true);
       } catch (error) {
@@ -61,7 +64,10 @@ const ListingPg = () => {
         // console.log(listingId, "this is listing id");
 
         const res = await axios.get(
-          `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`
+          `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`,
+          {
+            withCredentials: true,
+          }
         );
         // console.log(res);
         setRating(true);
@@ -79,7 +85,10 @@ const ListingPg = () => {
         setError(false);
         const listingId = params.listingId;
         const res = await axios.get(
-          `${BASE_URL}/api/v1/listing/get/${listingId}`
+          `${BASE_URL}/api/v1/listing/get/${listingId}`,
+          {
+            withCredentials: true,
+          }
         );
 
         console.log(res.data.data);

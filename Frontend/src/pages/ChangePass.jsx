@@ -13,10 +13,16 @@ const ChangePass = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${BASE_URL}/api/v1/users/change-password`, {
-        oldPassword,
-        newPassword,
-      });
+      const res = await axios.post(
+        `${BASE_URL}/api/v1/users/change-password`,
+        {
+          oldPassword,
+          newPassword,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       setError(false);
       setUpdateSuccess(true);
       console.log("Password changed successfully", res);

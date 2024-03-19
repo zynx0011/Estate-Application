@@ -15,7 +15,10 @@ export default function Contact({ formdata }) {
     const fetchLandlord = async () => {
       try {
         const res = await axios.get(
-          `${BASE_URL}/api/v1/users/${formdata?.userRef}`
+          `${BASE_URL}/api/v1/users/${formdata?.userRef}`,
+          {
+            withCredentials: true,
+          }
         );
         console.log(res);
         setLandlord(res.data);

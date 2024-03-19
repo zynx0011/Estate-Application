@@ -15,11 +15,17 @@ const OAuth = () => {
       const auth = getAuth(app);
       const response = await signInWithPopup(auth, provider);
       console.log(response.user);
-      const res = await axios.post(`${BASE_URL}/api/v1/users/google`, {
-        name: response.user.displayName,
-        email: response.user.email,
-        profilePicture: response.user.photoURL,
-      });
+      const res = await axios.post(
+        `${BASE_URL}/api/v1/users/google`,
+        {
+          name: response.user.displayName,
+          email: response.user.email,
+          profilePicture: response.user.photoURL,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       console.log(res);
       console.log(res.data);
       const data = res.data;

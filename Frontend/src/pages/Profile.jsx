@@ -94,6 +94,9 @@ const Profile = () => {
           username,
           email,
           formData,
+        },
+        {
+          withCredentials: true,
         }
       );
       // console.log("User updated successfully", res.data);
@@ -112,7 +115,10 @@ const Profile = () => {
       const res = await axios.delete(
         `${BASE_URL}/api/v1/users/delete-account/${
           currentUser?._id || user?._id || currentData._id
-        }`
+        }`,
+        {
+          withCredentials: true,
+        }
       );
       dispatch(deleteUserSuccess(res));
       console.log("Account deleted successfully", res);
@@ -124,7 +130,9 @@ const Profile = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.get(`${BASE_URL}/api/v1/users/logout`);
+      await axios.get(`${BASE_URL}/api/v1/users/logout`, {
+        withCredentials: true,
+      });
       dispatch(signOut());
     } catch (error) {
       console.log("Error while signing out", error);
@@ -139,7 +147,10 @@ const Profile = () => {
         const res = await axios.get(
           `${BASE_URL}/api/v1/users/listing/${
             currentUser?._id || user?._id || currentData?._id
-          }`
+          }`,
+          {
+            withCredentials: true,
+          }
         );
 
         setUserListing(res.data);
@@ -153,7 +164,12 @@ const Profile = () => {
 
   const handleListingDelete = async (id) => {
     try {
-      const res = await axios.delete(`${BASE_URL}/api/v1/listing/delete/${id}`);
+      const res = await axios.delete(
+        `${BASE_URL}/api/v1/listing/delete/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
 
       setUserListing((prev) => prev.filter((item) => item._id !== id));
     } catch (error) {
