@@ -112,7 +112,10 @@ export default function Home() {
     const fetchOfferListings = async () => {
       try {
         const res = await axios.get(
-          `${BASE_URL}/api/v1/listing/get?/offer=true&limit=4`
+          `${BASE_URL}/api/v1/listing/get?/offer=true&limit=4`,
+          {
+            withCredentials: true,
+          }
         );
         setOfferListings(res.data.data);
         fetchRentListings();
@@ -123,7 +126,10 @@ export default function Home() {
     const fetchRentListings = async () => {
       try {
         const res = await axios.get(
-          `${BASE_URL}/api/v1/listing/get?/type=rent&limit=4`
+          `${BASE_URL}/api/v1/listing/get?/type=rent&limit=4`,
+          {
+            withCredentials: true,
+          }
         );
         setRentListings(res.data.data);
         fetchSaleListings();
@@ -135,7 +141,10 @@ export default function Home() {
     const fetchSaleListings = async () => {
       try {
         const res = await axios.get(
-          `${BASE_URL}/api/v1/listing/get?/type=sale&limit=4`
+          `${BASE_URL}/api/v1/listing/get?/type=sale&limit=4`,
+          {
+            withCredentials: true,
+          }
         );
         setSaleListings(res.data.data);
       } catch (error) {
