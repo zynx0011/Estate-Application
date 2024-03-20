@@ -37,17 +37,17 @@ const SignIn = () => {
   };
   return (
     <div>
-      <section className="h-full bg-neutral-200 dark:bg-neutral-700">
+      <section className="h-full bg-neutral-200 dark:bg-neutral-700 text-black">
         <div className="container h-full p-10">
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
             <div className="w-full">
               <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
                 <div className="g-0 lg:flex lg:flex-wrap">
                   {/* <!-- Left column container--> */}
-                  <div className="px-4 md:px-0 lg:w-6/12">
+                  <div className="px-4 md:px-0 lg:w-6/12 text-black">
                     <div className="md:mx-6 md:p-12">
                       {/* <!--Logo--> */}
-                      <div className="text-center">
+                      <div className="text-center ">
                         <img
                           className="mx-auto w-48"
                           src="https://img.freepik.com/free-vector/logo-real-estate-home-solutions-that-is-home-solution_527952-33.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1708473600&semt=ais"
