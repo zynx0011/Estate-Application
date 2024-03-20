@@ -302,10 +302,14 @@ const google = async (req, res) => {
         .cookie("accessToken", accessToken, {
           httpOnly: true,
           // expires: expiryDate,
+          sameSite: "none",
+          secure: true,
         })
         .cookie("refreshToken", refreshToken, {
           httpOnly: true,
           // expires: expiryDate,
+          sameSite: "none",
+          secure: true,
         })
         .status(200)
         .json(rest);
