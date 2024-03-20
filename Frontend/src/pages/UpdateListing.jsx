@@ -156,6 +156,9 @@ const Listing = () => {
         {
           ...formData,
           userRef: data?._id,
+        },
+        {
+          withCredentials: true,
         }
       );
       setLoading(false);
@@ -173,7 +176,10 @@ const Listing = () => {
     const fetchListing = async () => {
       const listingId = params.listingId;
       const res = await axios.get(
-        `${BASE_URL}/api/v1/listing/get/${listingId}`
+        `${BASE_URL}/api/v1/listing/get/${listingId}`,
+        {
+          withCredentials: true,
+        }
       );
       console.log(res.data.data);
       setFormData(res.data.data);

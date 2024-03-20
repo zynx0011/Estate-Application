@@ -20,11 +20,17 @@ export default function SignUp() {
     try {
       setLoading(true);
       setError(false);
-      const res = await axios.post(`${BASE_URL}/api/v1/users/Signup`, {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `${BASE_URL}/api/v1/users/Signup`,
+        {
+          username,
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       navigate("/Home");
       console.log(res);
       dispatch(signInSuccess(res.data));

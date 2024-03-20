@@ -123,7 +123,9 @@ export default function Search() {
     const urlParams = new URLSearchParams(location.search);
     urlParams.set("startIndex", startIndex);
     const searchQuery = urlParams.toString();
-    const res = await fetch(`${BASE_URL}/api/v1/listing/get?${searchQuery}`);
+    const res = await fetch(`${BASE_URL}/api/v1/listing/get?${searchQuery}`, {
+      withCredentials: true,
+    });
     const data = await res.json();
     if (data.length < 9) {
       setShowMore(false);

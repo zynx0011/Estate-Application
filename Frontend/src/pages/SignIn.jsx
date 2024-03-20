@@ -17,10 +17,16 @@ const SignIn = () => {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await axios.post(`${BASE_URL}/api/v1/users/SignIn`, {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `${BASE_URL}/api/v1/users/SignIn`,
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       dispatch(signInSuccess(res));
 
       Navigate("/Home");
