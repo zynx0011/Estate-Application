@@ -107,7 +107,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
-    // sameSite: "none",
+    sameSite: "none",
   };
 
   return res
@@ -330,10 +330,12 @@ const google = async (req, res) => {
         .cookie("accessToken", accessToken, {
           httpOnly: true,
           expires: expiryDate,
+          sameSite: "none",
         })
         .cookie("refreshToken", refreshToken, {
           httpOnly: true,
           expires: expiryDate,
+          sameSite: "none",
         })
         .status(200)
         .json(rest);
