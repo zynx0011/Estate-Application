@@ -31,7 +31,7 @@ const ListingPg = () => {
   const [contact, setContact] = useState(false);
   const [rating, setRating] = useState(false);
   const [checkFavorite, setCheckFavorite] = useState(false);
-  // console.log(checkFavorite);
+  console.log(checkFavorite);
   const { listingId } = useParams();
 
   // console.log(formData);
@@ -137,20 +137,17 @@ const ListingPg = () => {
           <div className="flex flex-col  items-center mr-[27%]">
             <h1 className=" font-semibold text-3xl flex gap-7 p-10 mr-[20%]  ">
               {formData.name}
-              {currentUser ||
-                (data && (
-                  <span
-                    className="flex justify-center items-center "
-                    onClick={sumbitHandlerFavorite}
-                    style={{
-                      cursor: "pointer",
-                      color: checkFavorite ? "gray" : "gold",
-                      fontSize: "2.5rem",
-                    }}
-                  >
-                    &#9733;
-                  </span>
-                ))}
+              <span
+                className="flex justify-center items-center "
+                onClick={sumbitHandlerFavorite}
+                style={{
+                  cursor: "pointer",
+                  color: checkFavorite ? "gray" : "gold",
+                  fontSize: "2.5rem",
+                }}
+              >
+                &#9733;
+              </span>
             </h1>
 
             <h1 className=" font-semibold text-xl m-auto ml-[30%] text-gray-500">
