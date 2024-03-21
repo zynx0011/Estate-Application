@@ -142,7 +142,7 @@ const ListingPg = () => {
                 onClick={sumbitHandlerFavorite}
                 style={{
                   cursor: "pointer",
-                  color: checkFavorite ? "gray" : "gold",
+                  color: checkFavorite ? "gold" : "gray",
                   fontSize: "2.5rem",
                 }}
               >
