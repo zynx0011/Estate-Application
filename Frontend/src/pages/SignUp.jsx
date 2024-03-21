@@ -45,11 +45,11 @@ export default function SignUp() {
   return (
     <div>
       <div>
-        <section className="h-full bg-neutral-200 dark:bg-neutral-700">
-          <div className="container h-full p-10">
+        <section className="h-full bg-neutral-200 dark:bg-neutral-700 text-black">
+          <div className="container h-full p-10 text-black">
             <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
               <div className="w-full">
-                <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
+                <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800 text-black">
                   <div className="g-0 lg:flex lg:flex-wrap">
                     <div
                       className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
