@@ -18,6 +18,7 @@ import {
 import Contact from "../components/Contact";
 import { BASE_URL } from "../Config/config";
 // import Rating from "@mui/material/Rating";
+import { BsStarFill, BsStar } from "react-icons/bs";
 
 const ListingPg = () => {
   const params = useParams();
@@ -29,54 +30,74 @@ const ListingPg = () => {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
-  const [rating, setRating] = useState(false);
+  const [rating, setRating] = useState(true);
   const [checkFavorite, setCheckFavorite] = useState(false);
-  console.log(checkFavorite);
+  const [favorite, setFavorite] = useState([]);
+  // console.log(checkFavorite);
   const { listingId } = useParams();
+  console.log(rating);
 
   // console.log(formData);
   SwiperCore.use([Navigation]);
 
-  useEffect(() => {
-    const favorites = async () => {
-      try {
-        const res = await axios.get(
-          `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`,
-          {
-            withCredentials: true,
-          }
-        );
-        setCheckFavorite(true);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    favorites();
-  });
-
   const sumbitHandlerFavorite = async (e) => {
     e.preventDefault();
-    setCheckFavorite(!checkFavorite);
+    setRating(!rating);
     // console.log(listingId, "this is listing id");
 
+    // if (rating && rating === true) {
     try {
-      if (rating) {
-        // console.log(listingId, "this is listing id");
+      // console.log(listingId, "this is listing id");
 
+      const res = await axios.get(
+        `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+      setRating(false);
+      setCheckFavorite(true);
+    } catch (error) {
+      console.log(error);
+      setCheckFavorite(false);
+      // }
+    }
+  };
+
+  useEffect(() => {
+    const fetchFavorite = async () => {
+      try {
         const res = await axios.get(
-          `${BASE_URL}/api/v1/users/favorite-listing/favoriteListing/${listingId}`,
+          `${BASE_URL}/api/v1/users/favorite-listing/get/favoriteListing/${
+            currentUser?._id || data?._id
+          }`,
           {
             withCredentials: true,
           }
         );
-        // console.log(res);
+
+        // console.log(res, "res");
+        setFavorite(res?.data?.data);
+        // if (favorite?.userRef === data?._id) {
+        //   console.log(
+        //     favorite?.find((item) => item._id === listingId),
+        //     " s",
+        //     currentUser?._id
+        //   );
+        //   setRating(true);
+        // }
+
+        if (favorite?.find((item) => item._id === listingId)) {
+          setRating(false);
+        }
+      } catch (error) {
+        console.log(error);
         setRating(true);
-        setCheckFavorite(true);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
+    fetchFavorite();
+  }, [listingId]);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -142,11 +163,12 @@ const ListingPg = () => {
                 onClick={sumbitHandlerFavorite}
                 style={{
                   cursor: "pointer",
-                  color: checkFavorite ? "gray" : "gold",
+                  color: rating ? "gray" : "gold",
                   fontSize: "2.5rem",
                 }}
               >
-                &#9733;
+                {favorite ? <BsStarFill /> : <BsStar />}
+                {/* &#9733; */}
               </span>
             </h1>
 
