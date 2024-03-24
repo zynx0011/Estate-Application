@@ -1,4 +1,5 @@
 import { BASE_URL } from "../Config/config";
+import React from "react";
 const ForgotPass = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
