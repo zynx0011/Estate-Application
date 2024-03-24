@@ -172,29 +172,28 @@ export default function Home() {
   return (
     <div>
       {/* top */}
-      <div className="relative border-b-2  ">
+      <div className="relative border-b-2">
         <img
           src="https://images.pexels.com/photos/3288103/pexels-photo-3288103.png"
-          className="opacity-[0.3] h-[70vh] sm:h-auto object-cover  "
+          className="opacity-30 h-70vh sm:h-auto object-cover"
           alt=""
         />
-        <div className="absolute top-[35%] left-[12%]  flex  flex-col gap-4 sm:left-[57%]  space-y-5  ">
-          {" "}
-          <h1 className=" w-full text-4xl sm:text-6xl font-bold ">
+        <div className="absolute top-1/3 left-1/8 sm:left-5/6 flex flex-col gap-4 space-y-5">
+          <h1 className="text-4xl sm:text-6xl font-bold">
             Your Future Home <br className="mb-3" /> &nbsp; &nbsp;&nbsp; &nbsp;
             Is&nbsp;
-            <span className="text-white sm:text-4xl text-2xl rounded-lg p-3   bg-amber-900 ">
+            <span className="text-white sm:text-4xl text-2xl rounded-lg p-3 bg-amber-900">
               Right Here
             </span>
           </h1>
           <form
             onSubmit={handleSubmit}
-            className="bg-slate-100  sm:bg-transparent sm:border p-3 rounded-lg flex items-center justify-between w-[22vh] sm:w-[50vh] ml-[30%] mt-4 sm:ml-[16%] sm:mt-0"
+            className="bg-slate-100 sm:bg-transparent sm:border p-3 rounded-lg flex items-center justify-between w-22vh sm:w-50vh ml-30% mt-4 sm:ml-16% sm:mt-0"
           >
             <input
               type="text"
               placeholder="Search..."
-              className="bg-transparent focus:outline-none w-14 rounded-full "
+              className="bg-transparent focus:outline-none w-14 rounded-full"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -205,33 +204,33 @@ export default function Home() {
         </div>
       </div>
 
-      {/* second section  */}
-      <div className="flex  justify-around m-10 items-center p-10">
-        <div className="div">
+      {/* Second Section */}
+      <div className="flex justify-around m-10 items-center p-10">
+        <div>
           <h1 className="text-4xl font-bold">
-            Save your time and money by doing comfort business with us
+            Save your time and money by doing comfortable business with us
           </h1>
-          <p className="mt-5 w-[80%] text-slate-400">
-            Real Estate welcome all customer to do business with us. We gives
-            you 100% satisfaction deals. Our customer are always happy and
-            satisfied with us. Limited time deals are also available. Gives us a
-            call and we will help you to secure your dream.
+          <p className="mt-5 w-80 text-slate-400">
+            Real Estate welcomes all customers to do business with us. We
+            provide 100% satisfaction guaranteed deals. Our customers are always
+            happy and satisfied with us. Limited-time deals are also available.
+            Give us a call, and we will help you secure your dream property.
           </p>
 
-          <h1 className="text-3xl font-bold mt-5">Call for book an order:</h1>
-          <div className="flex  sm:justify-evenly mt-8 mr-[15%]">
-            <p className="border border-amber-500 hidden sm:block p-4 font-bold  text-center text-xl rounded-full  mt-5">
+          <h1 className="text-3xl font-bold mt-5">Call to book an order:</h1>
+          <div className="flex justify-between sm:justify-start mt-8">
+            <p className="border border-amber-500 hidden sm:block p-4 font-bold text-center text-xl rounded-full mt-5">
               +91 9876543210
             </p>
             <Link
               to={"/contact"}
-              className="bg-amber-500 text-white p-4 font-bold sm:w-[30%] text-center text-xl rounded-full  mt-5  mr-7"
+              className="bg-amber-500 text-white p-4 font-bold sm:w-30% text-center text-xl rounded-full mt-5 ml-5 sm:ml-0"
             >
-              Book Now{" "}
+              Book Now
             </Link>
           </div>
         </div>
-        <div className="div">
+        <div>
           <img
             src="https://res.cloudinary.com/myhq/image/upload/workspaces/bhive11-mohancooperativeindustrialestate/1.jpg"
             alt="img"
