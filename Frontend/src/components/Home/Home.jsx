@@ -175,10 +175,10 @@ export default function Home() {
       <div className="relative border-b-2">
         <img
           src="https://images.pexels.com/photos/3288103/pexels-photo-3288103.png"
-          className="opacity-30 h-70vh sm:h-auto object-cover"
+          className="opacity-30  sm:h-auto object-cover w-[100%] min-h-[70vh]"
           alt=""
         />
-        <div className="absolute top-1/3 left-1/8 sm:left-5/6 flex flex-col gap-4 space-y-5">
+        <div className="absolute top-1/3 left-9  sm:left-[60%] flex flex-col gap-4 space-y-5">
           <h1 className="text-4xl sm:text-6xl font-bold">
             Your Future Home <br className="mb-3" /> &nbsp; &nbsp;&nbsp; &nbsp;
             Is&nbsp;
@@ -205,32 +205,35 @@ export default function Home() {
       </div>
 
       {/* Second Section */}
-      <div className="flex justify-around m-10 items-center p-10">
-        <div>
-          <h1 className="text-4xl font-bold">
-            Save your time and money by doing comfortable business with us
+      <div className="flex  justify-around sm:m-10 items-center p-10">
+        <div className="div">
+          <h1 className="sm:text-4xl text-2xl sm:w-[80%] font-bold">
+            Streamline your business operations and maximize cost-efficiency
+            with our trusted services
           </h1>
-          <p className="mt-5 w-80 text-slate-400">
-            Real Estate welcomes all customers to do business with us. We
-            provide 100% satisfaction guaranteed deals. Our customers are always
-            happy and satisfied with us. Limited-time deals are also available.
-            Give us a call, and we will help you secure your dream property.
+          <p className="mt-5 sm:w-[80%] text-slate-400">
+            Real Estate welcome all customer to do business with us. We gives
+            you 100% satisfaction deals. Our customer are always happy and
+            satisfied with us. Limited time deals are also available. Gives us a
+            call and we will help you to secure your dream.
           </p>
 
-          <h1 className="text-3xl font-bold mt-5">Call to book an order:</h1>
-          <div className="flex justify-between sm:justify-start mt-8">
-            <p className="border border-amber-500 hidden sm:block p-4 font-bold text-center text-xl rounded-full mt-5">
+          <h1 className="sm:text-3xl font-bold mt-5">
+            Call for book an order:
+          </h1>
+          <div className="flex justify-evenly mt-8 mr-[15%]">
+            <p className="border hidden sm:block border-amber-500  p-4 font-bold  text-center text-xl rounded-full  mt-5">
               +91 9876543210
             </p>
             <Link
               to={"/contact"}
-              className="bg-amber-500 text-white p-4 font-bold sm:w-30% text-center text-xl rounded-full mt-5 ml-5 sm:ml-0"
+              className="bg-amber-500 text-white p-4 font-bold sm:w-[30%] text-center ml-10  text-xl rounded-full  mt-5 "
             >
-              Book Now
+              Contact Us{" "}
             </Link>
           </div>
         </div>
-        <div>
+        <div className="div">
           <img
             src="https://res.cloudinary.com/myhq/image/upload/workspaces/bhive11-mohancooperativeindustrialestate/1.jpg"
             alt="img"

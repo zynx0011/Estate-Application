@@ -29,7 +29,7 @@ const SignIn = () => {
       );
       dispatch(signInSuccess(res));
 
-      Navigate("/Home");
+      Navigate("/");
     } catch (err) {
       dispatch(signInFailure(err));
       console.log(err.message);
@@ -131,7 +131,7 @@ const SignIn = () => {
 
                   {/* <!-- Right column container with background and description--> */}
                   <div
-                    className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
+                    className="hidden sm:flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
                     style={{
                       background:
                         "linear-gradient(to top, #30cfd0 0%, #330867 100%)",

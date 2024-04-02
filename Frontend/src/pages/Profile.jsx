@@ -387,7 +387,7 @@ const Profile = () => {
                     <img
                       src={listing.imageUrls[0]}
                       alt="listing cover"
-                      className=" h-[60%] w-[100%] object-cover "
+                      className=" h-[60%] w-[100%] object-cover rounded-t-xl"
                     />
                     <h1 className=" text-center font-semibold mt-4 text-xs sm:text-lg">
                       {listing.name}
