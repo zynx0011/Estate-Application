@@ -54,9 +54,7 @@ const registerUser = asyncHandler(async (req, res) => {
     username,
   });
 
-  const createdUser = await User.findById(user._id).select(
-    "-password -refreshToken"
-  );
+  const createdUser = await User.findById(user._id).select("-password");
 
   const { accessToken, refreshToken } =
     await generateAccessTokenandRefreshToken(user._id);
@@ -102,7 +100,7 @@ const loginUser = asyncHandler(async (req, res) => {
     await generateAccessTokenandRefreshToken(Notuser._id);
 
   const user = await User.findById(Notuser._id).select(
-    "-password -refreshToken" //select mehtod will not show refresh token andd password
+    "-password " //select mehtod will not show refresh token andd password
   );
 
   const options = {
@@ -272,10 +270,10 @@ const updateAccoutDetails = asyncHandler(async (req, res) => {
     { new: true }
   );
 
-  console.log("this is req body of   ", req.body);
-  if (!req.body.username || !req.body.email === "") {
-    throw new ApiError(400, "All fields are required");
-  }
+  // console.log("this is req body of   ", req.body);
+  // if (!req.body.username || !req.body.email === "") {
+  //   throw new ApiError(400, "All fields are required");
+  // }
 
   if (!user) {
     throw new ApiError(404, "User not found");
@@ -880,4 +878,5 @@ export {
   forgotPassword,
   resetPassword,
   changeforgotPassword,
+  generateAccessTokenandRefreshToken,
 };

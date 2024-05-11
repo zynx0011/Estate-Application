@@ -18,7 +18,7 @@ import {
 import Contact from "../components/Contact";
 import { BASE_URL } from "../Config/config";
 // import Rating from "@mui/material/Rating";
-import { BsStarFill, BsStar } from "react-icons/bs";
+import { BsStarFill, BsStar, BsCloudLightning } from "react-icons/bs";
 
 const ListingPg = () => {
   const params = useParams();
@@ -65,6 +65,8 @@ const ListingPg = () => {
     }
   };
 
+  // console.log(favorite);
+
   useEffect(() => {
     const fetchFavorite = async () => {
       try {
@@ -77,20 +79,31 @@ const ListingPg = () => {
           }
         );
 
-        // console.log(res, "res");
-        setFavorite(res?.data?.data);
-        // if (favorite?.userRef === data?._id) {
-        //   console.log(
-        //     favorite?.find((item) => item._id === listingId),
-        //     " s",
-        //     currentUser?._id
-        //   );
-        //   setRating(true);
-        // }
+        // const data2 = res?.data?.data.forEach((element) => {
+        //   setFavorite(data2);
+        // });
 
-        if (favorite?.find((item) => item._id === listingId)) {
-          setRating(false);
+        const dataFromAPI = res?.data?.data;
+        if (dataFromAPI && dataFromAPI.length > 0) {
+          const favoritesData = dataFromAPI.map((element) => {
+            return element; // Assuming `favorite` is the field you want to set in state
+          });
+          setFavorite(favoritesData);
         }
+        // console.log(
+        //   favorite.forEach((element) => console.log(element.userRef))
+        // );
+        // console.log(data?._id, "s");
+
+        favorite?.map((item) =>
+          item.userRef === data?._id || currentUser?._id
+            ? setRating(false)
+            : setRating(true)
+        );
+        console.log(rating);
+        // if (favorite?.find((item) => item._id === listingId)) {
+        //   setRating(false);
+        // }
       } catch (error) {
         console.log(error);
         setRating(true);
@@ -98,6 +111,12 @@ const ListingPg = () => {
     };
     fetchFavorite();
   }, [listingId]);
+
+  console.log(
+    favorite.map((element) => element.userRef === data?._id || currentUser?._id)
+      ? true
+      : false
+  );
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -167,7 +186,7 @@ const ListingPg = () => {
                   fontSize: "2.5rem",
                 }}
               >
-                {favorite ? <BsStarFill /> : <BsStar />}
+                {rating ? <BsStarFill /> : <BsStar />}
                 {/* &#9733; */}
               </span>
             </h1>

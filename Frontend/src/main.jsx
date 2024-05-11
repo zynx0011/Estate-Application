@@ -27,6 +27,9 @@ import Contact from "./pages/Contact.jsx";
 import ForgotPass from "./pages/ForgotPass.jsx";
 import ForgotPassPopUp from "./pages/ForgotPassPopUp.jsx";
 import FavoritedLIsting from "./pages/FavoritedLIsting.jsx";
+import Admin from "./pages/Admin.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import AdminPrivateRoute from "../src/components/AdminPrivateRoute.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -54,6 +57,10 @@ const router = createBrowserRouter(
           path="/FavoritedListing/:userId"
           element={<FavoritedLIsting />}
         />
+        <Route path="/admin" element={<Admin />} />
+      </Route>
+      <Route element={<AdminPrivateRoute />}>
+        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
     </Route>
   )

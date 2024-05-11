@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
 import axios from "axios";
@@ -15,6 +15,10 @@ export default function SignUp() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const { currentUser } = useSelector((state) => state.auth);
+
+  // console.log(currentUser);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -42,6 +46,12 @@ export default function SignUp() {
       setError(true);
     }
   };
+
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     navigate("/");
+  //   }
+  // }, [submitHandler]);
   return (
     <div>
       <div>

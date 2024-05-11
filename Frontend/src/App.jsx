@@ -1,17 +1,27 @@
 import "./App.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { signInSuccess } from "./store/authSlice";
 
-function App() {
-  const { currentUser } = useSelector((state) => state.auth);
-  const user = currentUser?.data?.data?.user;
-
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline text-center">
-        {user?.username} <br /> Welcome to the Estate Application
-      </h1>
-    </>
-  );
-}
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get("/users/current-user");
+        // console.log(res);
+        if (res.status !== 200) {
+          Navigate("/api/v1/users/Signup");
+        }
+      } catch (error) {
+        // console.log(error);
+        dispatch(signInSuccess(null));
+        Navigate("/api/v1/users/Signup");
+      }
+    })();
+  }, []);
+};
 
 export default App;
