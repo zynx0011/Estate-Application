@@ -15,6 +15,7 @@ export default function Home() {
   const [saleListings, setSaleListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const testimonialList = [
@@ -111,6 +112,7 @@ export default function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
+        setLoading(true);
         const res = await axios.get(
           `${BASE_URL}/api/v1/listing/get?/offer=true&limit=4`,
           {
@@ -119,12 +121,15 @@ export default function Home() {
         );
         setOfferListings(res.data.data);
         fetchRentListings();
+        setLoading(false);
       } catch (error) {
+        setLoading(true);
         console.log(error);
       }
     };
     const fetchRentListings = async () => {
       try {
+        setLoading(true);
         const res = await axios.get(
           `${BASE_URL}/api/v1/listing/get?/type=rent&limit=4`,
           {
@@ -133,6 +138,7 @@ export default function Home() {
         );
         setRentListings(res.data.data);
         fetchSaleListings();
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -140,6 +146,7 @@ export default function Home() {
 
     const fetchSaleListings = async () => {
       try {
+        setLoading(true);
         const res = await axios.get(
           `${BASE_URL}/api/v1/listing/get?/type=sale&limit=4`,
           {
@@ -147,6 +154,7 @@ export default function Home() {
           }
         );
         setSaleListings(res.data.data);
+        setLoading(false);
       } catch (error) {
         log(error);
       }
@@ -169,7 +177,10 @@ export default function Home() {
       setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
-  return (
+
+  return loading ? (
+    "Please Wait data is loading from server it might take some time because it deploy on free server"
+  ) : (
     <div>
       {/* top */}
       <div className="relative border-b-2">
