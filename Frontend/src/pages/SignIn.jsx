@@ -52,7 +52,7 @@ const SignIn = () => {
                           className="mx-auto w-48"
                           src="https://img.freepik.com/free-vector/logo-real-estate-home-solutions-that-is-home-solution_527952-33.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1708473600&semt=ais"
                         />
-                        <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
+                        <h4 className=" mt-1 pb-1 text-xl font-semibold">
                           Welcome Back
                         </h4>
                       </div>
@@ -65,6 +65,17 @@ const SignIn = () => {
 
                       <form>
                         <p className="mb-4">Please login to your account</p>
+                        <p className="mb-4">
+                          For Demo Use both{" "}
+                          <span className="font-bold">
+                            email and password : demo@demo.com
+                          </span>
+                        </p>
+                        <p className="mb-4">
+                          <span className="font-bold"> NOTE :</span> The sever
+                          is hosted free hosting so it might take some time to
+                          load content , so please be patient
+                        </p>
                         {/* <!--Username input--> */}
                         <div className="flex flex-col ">
                           <label>Email :</label>
